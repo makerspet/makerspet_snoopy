@@ -1,10 +1,10 @@
 # Snoopy Kaia.ai-compatible pet robot
 
+![screenshot1](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/7cb95c4c-3b06-4502-b9aa-d4a8d713990e)
+
 A 300mm DIY 3D-printable pet robot compatible with [Kaia.ai](https://kaia.ai) software [platform](https://github.com/kaiaai/).
 
 3D print, build, run and mod your own home pet robot! Please learn more at [Maker's Pet](https://makerspet.com).
-
-![screenshot1](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/7cb95c4c-3b06-4502-b9aa-d4a8d713990e)
 
 ## Features
 - 3D-printable, 300mm body
