@@ -24,7 +24,7 @@ version that works with a smaller 210x210 build surface.
 - 3D printing instructions [here](https://github.com/makerspet/kaiaai_snoopy/arduino)
 
 ## Open-source design
-Authored in Fusion 360.
+Authored in Fusion 360. Printed using a Voron 2.4r2.
 
 ![screenshot2](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/11cb3721-ff3d-4806-9010-25725e0a10e3)
 
