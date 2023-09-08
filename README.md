@@ -11,17 +11,17 @@ A 300mm DIY 3D-printable pet robot compatible with [Kaia.ai](https://kaia.ai) so
   Requires 300x300mm build surface - or see a 210mm [Loki](https://github.com/makerspet/kaiaai_loki)
 version that works with a smaller 210x210 build surface.
 - ESP32 micro-controller.
-- Arduino [firmware](https://github.com/makerspet/kaiaai_snoopy/arduino)
+- Arduino [firmware](https://github.com/makerspet/kaiaai_snoopy/firmware)
 - room mapping using a 360-degree laser distance sensor (ROS2-based).
 - fully autonomous navigation (ROS2-based).
-- code your character, skills - see [software](https://kaia.ai/).
+- code your character, skills - see [software](https://kaia.ai).
 
 ## Instructions
+- 3D printing - STL, 3MF and instructions[here](https://github.com/makerspet/kaiaai_snoopy/hardware/)
 - Software setup instructions [here](https://github.com/makerspet/kaiaai_snoopy/config)
 - Software mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/urdf)
-- Firmware setup, mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/arduino)
-- 3D design files [here](https://github.com/makerspet/kaiaai_snoopy/fusion360)
-- 3D printing instructions [here](https://github.com/makerspet/kaiaai_snoopy/arduino)
+- Firmware setup, mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/firmware/)
+- Fusion 360 design files [here](https://github.com/makerspet/kaiaai_snoopy/hardware/fusion360)
 
 ## Open-source design
 Authored in Fusion 360. Printed using a Voron 2.4r2 350mm.
