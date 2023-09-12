@@ -1,4 +1,4 @@
-# Maker's Pet Snoopy pet robot
+# Snoopy pet robot
 
 ![screenshot1](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/7cb95c4c-3b06-4502-b9aa-d4a8d713990e)
 
