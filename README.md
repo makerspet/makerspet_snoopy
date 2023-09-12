@@ -11,7 +11,7 @@ A 300mm DIY 3D-printable pet robot compatible with [Kaia.ai](https://kaia.ai) so
   Requires 300x300mm build surface - or see a 200mm [Loki](https://github.com/makerspet/kaiaai_loki)
 version that works with a smaller 200x200 build surface.
 - ESP32 micro-controller.
-- Arduino [firmware](https://github.com/makerspet/kaiaai_snoopy/firmware)
+- Arduino [firmware](https://github.com/makerspet/kaiaai_snoopy/tree/main/firmware)
 - room mapping using a 360-degree laser distance sensor (ROS2-based).
 - fully autonomous navigation (ROS2-based).
 - code your character, skills - see [software](https://kaia.ai).
