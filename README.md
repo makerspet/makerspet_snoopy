@@ -4,6 +4,8 @@
 
 An open-source 300mm DIY 3D-printable pet robot compatible with [Kaia.ai](https://kaia.ai) software [platform](https://github.com/kaiaai/).
 
+Snoopy was designed in Fusion 360 in 05/2023 and printed using a Voron 2.4r2 350mm.
+
 3D print, build, run and mod your own home pet robot! Please learn more at [Maker's Pet](https://makerspet.com).
 
 ## Features
@@ -24,22 +26,17 @@ version that works with a smaller 200x200 build surface.
 - Electronics setup TODO
 
 ## Software setup
-- Software setup instructions [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/config)
-- Firmware setup, mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/firmware/)
+- PC setup for [end users](https://github.com/kaiaai/docker/tree/main/kaia-ros)
+- Firmware [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/firmware/)
+- Kaia.ai TODO
 
-## Programming
-- Character (TODO)
-- Processing (TODO)
-- Skills (TODO)
-
-## Modding
-- 3D design (TODO)
-- Firmware (TODO)
-- Electronics (TODO)
-- ROS2 package [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/urdf)
-
-## Open-source design
-Authored in Fusion 360. Printed using a Voron 2.4r2 350mm.
+## Develop and Mod
+- PC setup for [developers](https://github.com/kaiaai/docker/tree/main/kaia-ros-dev)
+- ROS2 robot description package
+  - config [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/config)
+  - instructions and robot model [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/urdf)
+- Firmware mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/firmware/)
+- Kaia.ai TODO
 
 ![screenshot2](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/11cb3721-ff3d-4806-9010-25725e0a10e3)
 
