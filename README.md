@@ -2,7 +2,7 @@
 
 ![screenshot1](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/7cb95c4c-3b06-4502-b9aa-d4a8d713990e)
 
-A 300mm DIY 3D-printable pet robot compatible with [Kaia.ai](https://kaia.ai) software [platform](https://github.com/kaiaai/).
+An open-source 300mm DIY 3D-printable pet robot compatible with [Kaia.ai](https://kaia.ai) software [platform](https://github.com/kaiaai/).
 
 3D print, build, run and mod your own home pet robot! Please learn more at [Maker's Pet](https://makerspet.com).
 
@@ -16,12 +16,27 @@ version that works with a smaller 200x200 build surface.
 - fully autonomous navigation (ROS2-based).
 - code your character, skills - see [software](https://kaia.ai).
 
-## Instructions
-- 3D printing - STL, 3MF and instructions[here](https://github.com/makerspet/kaiaai_snoopy/hardware/)
-- Software setup instructions [here](https://github.com/makerspet/kaiaai_snoopy/config)
-- Software mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/urdf)
-- Firmware setup, mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/firmware/)
-- Fusion 360 design files [here](https://github.com/makerspet/kaiaai_snoopy/hardware/fusion360)
+## DIY Hardware build
+- 3D printing:
+  - STL files [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/hardware/stl/)
+  - 3MF files [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/hardware/3mf/)
+  - Fusion 360 source files [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/hardware/fusion360)
+- Electronics setup TODO
+
+## Software setup
+- Software setup instructions [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/config)
+- Firmware setup, mod instructions [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/firmware/)
+
+## Programming
+- Character (TODO)
+- Processing (TODO)
+- Skills (TODO)
+
+## Modding
+- 3D design (TODO)
+- Firmware (TODO)
+- Electronics (TODO)
+- ROS2 package [here](https://github.com/makerspet/kaiaai_snoopy/tree/main/urdf)
 
 ## Open-source design
 Authored in Fusion 360. Printed using a Voron 2.4r2 350mm.
