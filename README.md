@@ -12,6 +12,8 @@ Snoopy was designed in Fusion 360 in 05/2023 and printed using a Voron 2.4r2 350
 - 3D-printable, 300mm round base
   Requires 300x300mm build surface - or see a 200mm [Loki](https://github.com/makerspet/kaiaai_loki)
 version that works with a smaller 200x200 build surface.
+- 2 bumpers, 4 bumper sensors, 5 cliff sensors.
+- A smartphone or a 7" tablet acts as as a head display.
 - ESP32 micro-controller.
 - Arduino [firmware](https://github.com/makerspet/kaiaai_snoopy/tree/main/firmware)
 - room mapping using a 360-degree laser distance sensor (ROS2-based).
