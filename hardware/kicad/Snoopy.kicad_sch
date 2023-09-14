@@ -1085,7 +1085,7 @@
     (property "Reference" "J3" (at 173.355 122.555 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "Deans T-Plug Female" (at 176.53 133.985 0)
+    (property "Value" "Deans T-Plug Male" (at 176.53 133.985 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "" (at 173.355 127.635 0)
