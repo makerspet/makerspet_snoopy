@@ -11,7 +11,7 @@ This firmware uses a Micro-ROS [library](https://github.com/kaiaai/micro_ros_ard
 
 - Power up your ESP32 Dev Module.
 - When powered up for the first time after firmware upload:
-  - Your ESP32 Dev Module should set up a WiFi network named `KAIA-WIFI`.
+  - Your ESP32 Dev Module should set up a 2.4GHz WiFi network named `KAIA-WIFI`.
   - Connect to `KAIA-WIFI` using your PC, smartphone or tablet. If your device has connections other than WiFi,
     disable those other connections. For example, put your smartphone in "Airplane Mode", then enable WiFi and
     connect to `KAIA-WIFI`. If prompted "This network has no internet access. Would you like to stay connected?",
@@ -24,6 +24,8 @@ This firmware uses a Micro-ROS [library](https://github.com/kaiaai/micro_ros_ard
     connecting to your home WiFi.
   - If your ESP32 module fails to connect to your home WiFi (e.g. wrong password), your WiFi module will
     recreate its `KAIA-WIFI` network, so you can retry the WiFi configuration steps above.
+  - Keep in mind that ESP32 works only with 2.4GHz networks. You will not be able to see or connect
+    to any 5GHz networks.
 - Launch Kaia.ai software stack on your PC, see instructions for
 [end users](https://github.com/kaiaai/docker/tree/main/kaia-ros) and [developers](https://github.com/kaiaai/docker/tree/main/kaia-ros-dev).
 - Your ESP32 module should re-connect to your home WiFi using the credentials you have supplied, see instructions
