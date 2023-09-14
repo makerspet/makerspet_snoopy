@@ -12,7 +12,8 @@ This firmware uses a Micro-ROS [library](https://github.com/kaiaai/micro_ros_ard
   - Connect to `KAIA-WIFI` using your PC, smartphone or tablet. If your device has connections other than WiFi,
     disable those other connections. For example, put your smartphone in "Airplane Mode", then enable WiFi and
     connect to `KAIA-WIFI`. If prompted "This network has no internet access. Would you like to stay connected?",
-    press "Yes". 
+    press "Yes".
+  - Your ESP32 module's LED should light up in solid color, no blinking, while `KAIA-WIFI` network is active.
   - Open a browser and navigate to [http://192.168.4.1](http://192.168.4.1). You should see a WiFi configuration
     page.
   - Enter your home WiFi credentials and press `Connect`.
