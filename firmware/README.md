@@ -28,7 +28,7 @@ This firmware uses a Micro-ROS [library](https://github.com/kaiaai/micro_ros_ard
 [end users](https://github.com/kaiaai/docker/tree/main/kaia-ros) and [developers](https://github.com/kaiaai/docker/tree/main/kaia-ros-dev).
 - Your ESP32 module should re-connect to your home WiFi using the credentials you have supplied, see instructions
 above.
-  - If your ESP32 module fails to connect to your home WiFi within 10 seconds, your WiFi module will
+  - If your ESP32 module fails to connect to your home WiFi within 30 seconds, your WiFi module will
     recreate its `KAIA-WIFI` network, so you can retry the WiFi configuration steps above.
 - Once connected to your home WiFi, your ESP32 module will attempt to connect to your PC running the Kaia.ai software stack.
   - Upon successful connection your PC should print out some diagnostic information.
@@ -38,7 +38,7 @@ above.
     That will tell you the reason for the failure.
   - Alternatively, connect your ESP32 module to your Arduino IDE using a USB cable, select the Arduino IDE COM port
     by clicking Tools -> Port, click Tools -> Serial Monitor to open the Arduino IDE console and 
-    set its baud rate to 115200. Reset your ESP32 module by pressing its BOOT button and observe ESP32 printing
+    set its baud rate to 115200. Reset your ESP32 module by pressing its EN button and observe ESP32 printing
     diagnostic information while establishing its WiFi network, a WiFi connection, a PC connection and associated
     error messages, if any.
 
