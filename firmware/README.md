@@ -6,6 +6,9 @@ This repo contains Arduino ESP32 firmware for [Kaia.ai](https://kaia.ai) home pe
 This firmware uses a Micro-ROS [library](https://github.com/kaiaai/micro_ros_arduino_kaia) for Arduino.
 
 ## Bringup
+
+![kaia-wifi screen](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/71b32a97-adec-4f76-b97b-c47f91dce13e)
+
 - Power up your ESP32 Dev Module.
 - When powered up for the first time after firmware upload:
   - Your ESP32 Dev Module should set up a WiFi network named `KAIA-WIFI`.
