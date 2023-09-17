@@ -27,7 +27,8 @@ desc_name=${desc_name:-/}
 # echo $desc_name
 
 # Extract robot model name prefix
-robot_name=${desc_name%"_description"}
+# robot_name=${desc_name%"_description"}
+#robot_name=desc_name
 # echo $robot_name
 
 # echo $clone_path
