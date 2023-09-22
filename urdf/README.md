@@ -13,7 +13,7 @@ ros2 run makerspet_snoopy clone_robot_description.sh /ros_ws/src/awesome_droid
   - Edit the robot model in `awesome_droid/urdf/awesome_droid.urdf`
 - Generate your simulation model, compiler your `awesome_droid` description and launch it in a simulation:
 ```
-ros2 run makerspet_snoopy urdf2sdf.sh /ros_ws/src/awesome_droid/urdf/ awesome_droid
+ros2 run kaiaai_gazebo urdf2sdf.sh /ros_ws/src/awesome_droid/urdf/ awesome_droid
 cd /ros_ws
 colcon build --symlink-install --packages-select awesome_droid
 ros2 launch kaiaai_gazebo world.launch.py description:=awesome_droid
