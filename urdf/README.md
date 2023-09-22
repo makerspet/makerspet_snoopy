@@ -15,8 +15,10 @@ ros2 launch kaiaai_gazebo world.launch.py description:=awesome_droid
 ```
 
 ## Command cheat sheet
+
 <details>
 <summary>Operate a modded pet robot residing `awesome_droid` repo:</summary>
+
 ```
 # Launch the physical robot
 ros2 launch kaiaai_bringup main.launch.py description:=awesome_droid
