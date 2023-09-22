@@ -1,16 +1,21 @@
 # [Maker's Pet](https://makerspet.com) makerspet_snoopy Pet robot model and configurations
 
 ## Modding the robot
-- copy `makerspet_snoopy` to `awesome_droid`, where `awesome_droid` is a name you picked for your modded robot
-- rename references files, folders and file contents to replace `makerspet_snoopy` with `awesome_droid`, incuding `package.xml`,
-`CMakeLists.txt`, `urdf/makerspet_snoopy.urdf.xacro`, `sdf/makerspet_snoopy`, `sdf/makerspet_snoopy/model.*`
-- edit parameters in `urdf/awesome_droid.urdf.xacro` to tweak your pet robot size
-- generate SDF file as follows
+- Clone `makerspet_snoopy` robot into a new `awesome_droid` robot.
+```
+ros2 run makerspet_snoopy clone_robot_description.sh /ros_ws/src/awesome_droid
+```
+- Follow instructions in the script's output to complete the cloning process, including:
+  - Edit `awesome_droid/package.xml` to update the author, website, description, version, email
+  - Edit `awesome_droid/README.md` to update the description
+  - Edit `awesome_droid/sdf/awesome_droid/model.config` to update the author, description, version, email
+  - Edit the robot config files in `awesome_robot/config/`
+  - Edit the robot model in `awesome_droid/urdf/awesome_droid.urdf`
+- Generate your simulation model, compiler your `awesome_droid` description and launch it in a simulation:
 ```
 ros2 run makerspet_snoopy urdf2sdf.sh /ros_ws/src/awesome_droid/urdf/ awesome_droid
 cd /ros_ws
 colcon build --symlink-install --packages-select awesome_droid
-
 ros2 launch kaiaai_gazebo world.launch.py description:=awesome_droid
 ```
 
@@ -47,7 +52,7 @@ ros2 launch kaiaai_bringup inspect_urdf.launch.py description:=awesome_droid mod
 ros2 launch kaiaai_bringup edit_urdf.launch.py description:=awesome_droid model:=my_model
 
 # Convert URDF robot model file into SDF Gazebo simulation model file
-ros2 run awesome_droid urdf2sdf.sh /ros_ws/src/awesome_droid/urdf/ r2d2
+ros2 run awesome_droid urdf2sdf.sh /ros_ws/src/awesome_droid/urdf/ awesome_droid
 cd /ros_ws && colcon build --symlink-install --packages-select awesome_droid
 ```
 </details>
