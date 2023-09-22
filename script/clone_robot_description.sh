@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clone the robot description (where the script resides) into a new one
-#   ros2 run kaia_snoopy_description clone_robot_description.sh /ros_ws/src/kaia_fido_description
+#   ros2 run makerspet_snoopy_description clone_robot_description.sh /ros_ws/src/kaia_fido_description
 [[ -z "$1" ]] && { echo "Destination path missing" ; exit 1; }
 [[ -z "$2" ]] && { echo "Clone model prefix missing" ; exit 1; }
 [[ -d "$1" ]] && { echo "Destination path already exists" ; exit 1; }
