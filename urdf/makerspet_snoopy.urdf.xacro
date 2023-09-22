@@ -499,7 +499,7 @@
   <gazebo reference="base_scan">
     <sensor type="ray" name="laser_scan_sensor">
       <!-- pose>0 0 0 0 0 0</pose -->
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <always_on>true</always_on>
       <update_rate>9</update_rate>
       <ray>
