@@ -415,8 +415,8 @@
   <gazebo reference="color_camera_link">
     <sensor type="camera" name="color_camera">
       <always_on>true</always_on>
-      <visualize>true</visualize>
-      <update_rate>30.0</update_rate>
+      <visualize>false</visualize>
+      <update_rate>15.0</update_rate>
       <camera name="front_color_camera">
         <horizontal_fov>1.3962634</horizontal_fov>
         <image>
