@@ -3,7 +3,7 @@
 ## Modding the robot
 - Clone `makerspet_snoopy` robot into a new `awesome_droid` robot.
 ```
-ros2 run makerspet_snoopy clone_robot_description.sh /ros_ws/src/awesome_droid
+ros2 run kaiaai clone_robot_description.sh /ros_ws/src/awesome_droid
 ```
 - Edit `awesome_droid/package.xml` to update the author, website, description, version, email
 - Edit `awesome_droid/README.md` to update the description
