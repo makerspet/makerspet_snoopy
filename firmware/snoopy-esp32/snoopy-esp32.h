@@ -12,7 +12,7 @@
 // Micro-ROS config
 #define MICRO_ROS_AGENT_PORT 8888
 #define MICRO_ROS_AGENT_IP "192.168.1.112" // "192.168.226.157"
-#define UROS_CLIENT_KEY 0xCA1A0000
+#define UROS_CLIENT_KEY 0xCA1AA100
 #define UROS_TELEM_TOPIC_NAME "telemetry"
 #define UROS_LOG_TOPIC_NAME "rosout"
 #define UROS_CMD_VEL_TOPIC_NAME "cmd_vel"
@@ -21,7 +21,8 @@
 #define LDS_BUF_LEN 400
 
 // WiFi config
-#define WIFI_CONN_TIMEOUT_MS 10000
+#define WIFI_CONN_TIMEOUT_MS 30000
+#define RESET_SETTINGS_HOLD_SECONDS 5 // Hold button this long to reset WiFi
 
 // Motors config
 #define WHEEL_DIA (2*33.5e-3) // meters
@@ -38,6 +39,12 @@
 #define ERR_UROS_EXEC 7
 #define ERR_UROS_SPIN 8
 #define ERR_LDS_INIT  9
+
+#define ERR_REBOOT_AFTER_ID_CYCLES 5 // Reboot after showing error several times
+#define LONG_BLINK_MS 1000
+#define LONG_BLINK_PAUSE_MS 2000
+#define SHORT_BLINK_MS 200
+#define SHORT_BLINK_PAUSE_MS 500
 
 #if !defined(ESP32)
   #error This code builds on ESP32 Dev module only

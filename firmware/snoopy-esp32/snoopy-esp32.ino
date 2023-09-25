@@ -4,55 +4,24 @@
 TODO check agent connection rclc_executor_spin_some() != RCL_RET_OK
   call esp_wifi_disconnect() before reset/reboot
 
-https://randomnerdtutorials.com/esp32-wi-fi-manager-asyncwebserver/
-
 sudo apt install ros-humble-geometry2
 ros2 topic list
 ros2 topic pub /cmd_vel geometry_msgs/msg/Twist
   "{linear: {x: 0.1, y: 0.0, z: 0.0},
   angular: {x: 0.0, y: 0.0, z: 1.0}}" -1
 
-cmd_vel in ESP32 vs per-motor speed from PC ROS diff_controller
-  because ESP32 needs to know direction of movement to stop
-  if LDS detects an obstacle in that direction
 TODO debug /odom NaN
-TODO WiFi not getting IP on reconnect (same on laptop!)
-https://github.com/micro-ROS/micro_ros_arduino/blob/iron/src/micro_ros_arduino.h
 https://randomnerdtutorials.com/esp32-useful-wi-fi-functions-arduino/
 https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
-
-https://micro.ros.org/docs/tutorials/advanced/create_new_type/
-
-cd C:\Users\ilya\Documents\Arduino\libraries\micro_ros_arduino
-  \extras\library_generation\extra_packages\
-git clone https://github.com/iovsiann/kaia_msgs
-docker run -it --rm --name uros-arduino-lib
-  -v //c/Users/ilya/Documents/Arduino/libraries/micro_ros_arduino:/project
-  --env MICROROS_LIBRARY_FOLDER=extras
-  microros/micro_ros_static_library_builder:humble -p esp32
-
-docker run --name kaia-ros-dev-humble -it --rm
-   -p 8888:8888/udp -e DISPLAY=host.docker.internal:0.0
-  -e LIBGL_ALWAYS_INDIRECT=0 kaia-ros-dev:humble    # launch
-docker exec -it kaia-ros-dev-humble bash
-
-mkdir -p /ros_ws/src && cd /ros_ws/src
-git clone https://github.com/kaiaai/kaia_msgs
-git clone https://github.com/kaiaai/kaia_telem
-git clone https://github.com/kaiaai/kaia_launch
-cd /ros_ws
-colcon build
-. install/setup.bash
-ros2 run kaia_telem test_pub
-ros2 run kaia_telem telem
+https://randomnerdtutorials.com/esp32-wi-fi-manager-asyncwebserver/
 */
 //#define RMW_UXRCE_TRANSPORT_UDP
 
-#include "kaia-esp32.h"
+#include "snoopy-esp32.h"
 #include "util.h"
 #include <WiFi.h>
 #include <stdio.h>
-#include <micro_ros_kaia.h>
+#include <micro_ros_kaiaai.h>
 #include <HardwareSerial.h>
 #include "YDLidar.h"
 //#include <sys/time.h>
@@ -61,7 +30,7 @@ ros2 run kaia_telem telem
 #include <rcl/error_handling.h>
 #include <rclc/rclc.h>
 #include <rclc/executor.h>
-#include <kaia_msgs/msg/kaia_telemetry.h>
+#include <kaiaai_msgs/msg/kaiaai_telemetry.h>
 #include <geometry_msgs/msg/twist.h>
 #include <rcl_interfaces/msg/log.h>
 #include <rmw_microros/rmw_microros.h>
@@ -81,7 +50,7 @@ const float WHEEL_RADIUS = WHEEL_DIA / 2;
 rcl_publisher_t telem_pub;
 rcl_publisher_t log_pub;
 rcl_subscription_t twist_sub;
-kaia_msgs__msg__KaiaTelemetry telem_msg;
+kaiaai_msgs__msg__KaiaaiTelemetry telem_msg;
 geometry_msgs__msg__Twist twist_msg;
 rclc_support_t support;
 rcl_allocator_t allocator;
@@ -256,15 +225,14 @@ void setup() {
   pinMode(YD_MOTOR_EN_PIN, OUTPUT);
   enableMotor(false);
 
-  //initWiFi((char*)WIFI_SSID, (char*)WIFI_PASSWORD);
   if (!initWiFi(getSSID(), getPassw())) {
-    ObtainWiFiCreds();
+    digitalWrite(LED_PIN, HIGH);
+    ObtainWiFiCreds(spinResetSettings);
     return;
   }
 
-  set_microros_wifi_transports((char*)MICRO_ROS_AGENT_IP, MICRO_ROS_AGENT_PORT);
-//  set_microros_wifi_transports_mod(NULL, NULL, (char*)MICRO_ROS_AGENT_IP,
-//    MICRO_ROS_AGENT_PORT);
+//  set_microros_wifi_transports((char*)MICRO_ROS_AGENT_IP, MICRO_ROS_AGENT_PORT);
+  set_microros_wifi_transports(getDestIP().c_str(), getDestPort().toInt());
 
   delay(2000);
 
@@ -322,7 +290,7 @@ static inline void initRos() {
     UROS_CMD_VEL_TOPIC_NAME), ERR_UROS_PUBSUB);
 
   RCCHECK(rclc_publisher_init_best_effort(&telem_pub, &node,
-    ROSIDL_GET_MSG_TYPE_SUPPORT(kaia_msgs, msg, KaiaTelemetry),
+    ROSIDL_GET_MSG_TYPE_SUPPORT(kaiaai_msgs, msg, KaiaaiTelemetry),
     UROS_TELEM_TOPIC_NAME), ERR_UROS_PUBSUB);
 
   RCCHECK(rclc_publisher_init_default(&log_pub, &node,
@@ -337,7 +305,6 @@ static inline void initRos() {
   resetTelemMsg();
 }
 
-//static inline bool initWiFi(char* ssid, char* passw) {
 static inline bool initWiFi(String ssid, String passw) {
 
   if(ssid.length() == 0){
@@ -354,7 +321,6 @@ static inline bool initWiFi(String ssid, String passw) {
   //  return false;
   //}
 
-  //WiFi.begin(ssid.c_str(), pass.c_str());
   WiFi.begin(ssid, passw);
 
   Serial.print("Connecting to WiFi ");
@@ -374,6 +340,7 @@ static inline bool initWiFi(String ssid, String passw) {
     digitalWrite(LED_PIN, LOW);
     Serial.print('.'); // Don't use F('.'), it crashes code!!
     delay(250);
+    spinResetSettings();
   }
 
   digitalWrite(LED_PIN, LOW);
@@ -527,7 +494,7 @@ void spinLDS() {
 
 void spinPing() {
   unsigned long time_now_us = esp_timer_get_time();
-  unsigned long step_time_us = step_time_us = time_now_us - ping_prev_pub_time_us;
+  unsigned long step_time_us = time_now_us - ping_prev_pub_time_us;
   
   if (step_time_us >= ping_pub_period_us) {
     // timeout_ms, attempts
@@ -549,8 +516,37 @@ void loop() {
   spinLDS();
   spinTelem(false);
   spinPing();
+  spinResetSettings();
   updateSpeedRamp(); // slow down?
   drive.update();
+}
+
+unsigned int reset_settings_check_period_ms = 1000; // Check once a second
+unsigned char button_pressed_seconds = 0;
+unsigned long reset_settings_prev_check_time_ms = 0;
+
+void resetSettings() {
+  Serial.println("** Resetting settings **");
+  resetWiFiSettings();
+  blink(LONG_BLINK_MS, 5);
+  Serial.flush();
+
+  ESP.restart();
+}
+
+void spinResetSettings() {
+  unsigned long time_now_ms = millis();
+  unsigned long step_time_ms = time_now_ms - reset_settings_prev_check_time_ms;
+
+  if (step_time_ms >= reset_settings_check_period_ms) {
+
+    bool button_pressed = !digitalRead(0);
+    if (button_pressed && button_pressed_seconds > RESET_SETTINGS_HOLD_SECONDS)
+      resetSettings();
+
+    button_pressed_seconds = button_pressed ? button_pressed_seconds + 1 : 0;
+    reset_settings_prev_check_time_ms = time_now_ms;
+  }
 }
 
 void resetTelemMsg()
@@ -771,10 +767,17 @@ void error_loop(int n_blinks){
   sprintf(buffer, "Fatal error %d", n_blinks);  
   logMsg(buffer, rcl_interfaces__msg__Log__FATAL);
 
-  while(1){
-    blink(1000, 1);
+  unsigned int i = 0;
+  while(i++ < ERR_REBOOT_AFTER_ID_CYCLES){
+    blink(LONG_BLINK_MS, 1);
     digitalWrite(LED_PIN, LOW);
-    delay(1000);
-    blink(200, n_blinks);
+    delay(SHORT_BLINK_PAUSE_MS);
+    blink(SHORT_BLINK_MS, n_blinks);
+    delay(LONG_BLINK_PAUSE_MS);
+
+    while(!digitalRead(0)) {
+      spinResetSettings();
+    }
   }
+  ESP.restart();
 }

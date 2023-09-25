@@ -24,6 +24,7 @@ void blink(unsigned int delay_ms, unsigned int count) {
     digitalWrite(LED_PIN, HIGH);
     delay(delay_ms);
   }
+  digitalWrite(LED_PIN, LOW);
 }
 
 void printCurrentTime() {
@@ -66,4 +67,48 @@ void twistToWheelSpeeds(float speed_lin_x, float speed_ang_z,
   float ang_component = speed_ang_z*WHEEL_BASE*0.5;
   *speed_right = speed_lin_x + ang_component;
   *speed_left  = speed_lin_x - ang_component;
+}
+
+String reset_reason_to_string(int reason, bool verbose) {
+  if (verbose) {
+    switch ( reason)
+    {
+      case 1  : return ("Vbat power on reset");
+      case 3  : return ("Software reset digital core");
+      case 4  : return ("Legacy watch dog reset digital core");
+      case 5  : return ("Deep Sleep reset digital core");
+      case 6  : return ("Reset by SLC module, reset digital core");
+      case 7  : return ("Timer Group0 Watch dog reset digital core");
+      case 8  : return ("Timer Group1 Watch dog reset digital core");
+      case 9  : return ("RTC Watch dog Reset digital core");
+      case 10 : return ("Instrusion tested to reset CPU");
+      case 11 : return ("Time Group reset CPU");
+      case 12 : return ("Software reset CPU");
+      case 13 : return ("RTC Watch dog Reset CPU");
+      case 14 : return ("for APP CPU, reseted by PRO CPU");
+      case 15 : return ("Reset when the vdd voltage is not stable");
+      case 16 : return ("RTC Watch dog reset digital core and rtc module");
+      default : return ("NO_MEAN");
+    }
+  } else {
+    switch ( reason)
+    {
+      case 1 : return ("POWERON_RESET");
+      case 3 : return ("SW_RESET");
+      case 4 : return ("OWDT_RESET");
+      case 5 : return ("DEEPSLEEP_RESET");
+      case 6 : return ("SDIO_RESET");
+      case 7 : return ("TG0WDT_SYS_RESET");
+      case 8 : return ("TG1WDT_SYS_RESET");
+      case 9 : return ("RTCWDT_SYS_RESET");
+      case 10 : return ("INTRUSION_RESET");
+      case 11 : return ("TGWDT_CPU_RESET");
+      case 12 : return ("SW_CPU_RESET");
+      case 13 : return ("RTCWDT_CPU_RESET");
+      case 14 : return ("EXT_CPU_RESET");
+      case 15 : return ("RTCWDT_BROWN_OUT_RESET");
+      case 16 : return ("RTCWDT_RTC_RESET");
+      default : return ("NO_MEAN");
+    }
+  }
 }

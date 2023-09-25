@@ -2,7 +2,7 @@
 #define KAIA_ESP32_UTIL
 
 #include "arduino.h"
-#include "kaia-esp32.h"
+#include "snoopy-esp32.h"
 
 const float WHEEL_PERIM_LEN_DIV60 = PI * WHEEL_DIA / 60;
 const float WHEEL_PERIM_LEN_DIV60_RECIP = 1/WHEEL_PERIM_LEN_DIV60;
@@ -17,5 +17,7 @@ void printCurrentTime();
 void setMotorSpeed(int16_t speed);
 void twistToWheelSpeeds(float speed_lin_x, float speed_ang_z,
   float *speed_right, float *speed_left);
+
+String reset_reason_to_string(int reason, bool verbose=false);
 
 #endif  // KAIA_ESP32_UTIL
