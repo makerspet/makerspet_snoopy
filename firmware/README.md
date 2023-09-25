@@ -67,12 +67,11 @@ above.
 
 ## Factory reset
 You can wipe out stored settings, including WiFi SSID and password, as follows:
-- hold ESP32 Boot button
-- press ESP32 EN (reset) button
-- continue holding ESP32 Boot buttom for at least 5 more seconds
+- press and release ESP32 `EN` (reset) button
+- press and hold ESP32 `Boot` button for at least 5 seconds
 - release ESP32 Boot button
-- ESP32 should bling 5 times slowly (1 blink per 2 seconds)
-- ESP32 will reboot after that and enter its WiFi configuration mode
+- ESP32 should blink, 5 times slowly - 1 blink per 2 seconds
+- ESP32 will reboot after that and reenter its WiFi configuration mode
 
 ## Modding the robot and its firmware
 - Start with an existing Kaia.ai robot, e.g. [Snoopy](https://github.com/kaiaai/kaia_descriptions/)
