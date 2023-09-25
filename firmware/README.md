@@ -65,6 +65,15 @@ above.
   - Release the `EN` button on your ESP32 Dev Module.
   - The sketch data upload should finish successfully.
 
+## Factory reset
+You can wipe out stored settings, including WiFi SSID and password, as follows:
+- hold ESP32 Boot button
+- press ESP32 EN (reset) button
+- continue holding ESP32 Boot buttom for at least 5 more seconds
+- release ESP32 Boot button
+- ESP32 should bling 5 times slowly (1 blink per 2 seconds)
+- ESP32 will reboot after that and enter its WiFi configuration mode
+
 ## Modding the robot and its firmware
 - Start with an existing Kaia.ai robot, e.g. [Snoopy](https://github.com/kaiaai/kaia_descriptions/)
 - If needed, mod the robot's 3D-printable robot body. You can use [Snoopy's design](https://github.com/kaiaai/3D_printables/) as a starting point
