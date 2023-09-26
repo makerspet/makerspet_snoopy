@@ -47,6 +47,22 @@ Kaia.ai ROS2 software stack (in Docker).
     diagnostic information while establishing its WiFi network, a WiFi connection, a PC connection and associated
     error messages, if any.
 
+## Troubleshooting
+- If ESP32 fails to connect to our WiFi or your local PC:
+  - Launch Arduino IDE on your PC.
+  - Connect ESP32 to your PC using a USB cable.
+  - Launch Tools -> Serial Monitor in your Arduino IDE.
+  - Reset your ESP32 by pressing it `En` button.
+  - Inspect the debug output in the Serial Monitor console as ESP32 attempts to establish its WiFi
+    connection.
+  - Once the WiFi connection succeed, keep inspecting the Serial Monitor's debug output
+    as ESP32 attempts connecting to your local PC.
+- Try "factory-resetting" your ESP32, see instructions below.
+- Try turning your router or hotspot off and on. My personal Google Pixel 7's hotspot has a bug
+  that prevents ESP32 (as well as my laptop) re-connecting successfully. Only the first
+  connection attempt succeeds. Connecting a second time succeeds only once I manually turn
+  the hotspot off and then back on.
+
 ## Installation
 - Download the Kaia.ai firmware project code from this [repo](https://github.com/kaiaai/arduino_fw)
 - Install the Micro-ROS Kaia.ai library using Arduino Library Manager. Learn more [here](https://github.com/kaiaai/micro_ros_arduino_kaia)
