@@ -146,7 +146,7 @@ void DriveController::setPWMFreq(unsigned char motorID, unsigned short int freq)
 }
 
 void DriveController::setPWM(unsigned char motorID, float value) {
-  if (motorID >= MOTOR_COUNT)
+  if (!enabled || (motorID >= MOTOR_COUNT))
     return;
 
   if (switchingCw[motorID])
@@ -189,6 +189,7 @@ void DriveController::resetEncoders() {
 }
 
 DriveController::DriveController() {
+  enabled = false;
   pwmPin[MOTOR_LEFT] = MOT_PWM_LEFT_PIN;
   pwmPin[MOTOR_RIGHT] = MOT_PWM_RIGHT_PIN;
 
@@ -204,7 +205,7 @@ void DriveController::update() {
   
   unsigned long tickTime = esp_timer_get_time();
   unsigned long tickTimeDelta = tickTime - tickSampleTimePrev;
-  if ((tickTimeDelta < pidUpdatePeriodUs) && !anySetPointHasChanged)
+  if (!enabled || ((tickTimeDelta < pidUpdatePeriodUs) && !anySetPointHasChanged))
     return;
 
   tickSampleTimePrev = tickTime;
@@ -277,4 +278,16 @@ float DriveController::getMaxRPM(unsigned char motorID) {
   if (motorID >= MOTOR_COUNT)
     return 0;
   return maxRPM[motorID];
+}
+
+bool DriveController::isEnabled() {
+  return enabled;
+}
+
+void DriveController::enable(bool enabled) {
+  if (!enabled) {
+    setPWM(MOTOR_RIGHT, 0);
+    setPWM(MOTOR_LEFT, 0);
+  }
+  this->enabled = enabled;
 }

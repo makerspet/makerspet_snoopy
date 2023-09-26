@@ -38,8 +38,8 @@
 #define ERR_UROS_PUBSUB 6
 #define ERR_UROS_EXEC 7
 #define ERR_UROS_SPIN 8
-#define ERR_LDS_INIT 9
-#define ERR_WIFI_LOST 10
+#define ERR_LDS_INIT  9
+#define ERR_WIFI_LOST  10
 
 #define ERR_REBOOT_BLINK_CYCLES 3 // Blinki out an error a few times, then reboot
 #define LONG_BLINK_MS 1000

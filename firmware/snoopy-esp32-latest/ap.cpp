@@ -139,6 +139,7 @@ void ObtainWiFiCreds(void (*callback)()) {
       "<p>Destination IP: " + dest_ip + "</p>"
       "<p>Destination Port: " + dest_port + "</p>"
       "</center></BODY></HTML>");
+    //delay(3000);
     unsigned long ms = millis();
     while(millis() - ms < 3000)
       yield();

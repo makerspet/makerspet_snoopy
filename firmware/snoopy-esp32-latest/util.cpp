@@ -7,7 +7,7 @@ float absMin(float a, float b_abs) {
   return a >= 0 ? min_abs : -min_abs;
 }
 
-void enableMotor(bool enable) {
+void enableLDSMotor(bool enable) {
   int current_state = digitalRead(YD_MOTOR_EN_PIN);
   int new_state = enable ? HIGH : LOW;
   if (current_state != new_state) {

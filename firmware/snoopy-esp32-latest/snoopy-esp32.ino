@@ -56,8 +56,8 @@ uint8_t lds_buf[LDS_BUF_LEN] = {0};
 
 unsigned long telem_prev_pub_time_us = 0;
 unsigned long ping_prev_pub_time_us = 0;
-unsigned long telem_pub_period_us = 50000;
-unsigned long ping_pub_period_us = 10000000;
+unsigned long telem_pub_period_us = TELEM_PUB_PERIOD_MS*1000;
+unsigned long ping_pub_period_us = PING_PUB_PERIOD_MS*1000;
 
 unsigned long ramp_duration_us = 0;
 unsigned long ramp_start_time_us = 0;
@@ -78,6 +78,11 @@ void twist_sub_callback(const void *msgin) {
 
   float target_speed_lin_x = msg->linear.x;
   float target_speed_ang_z = msg->angular.z;
+
+  Serial.print("Twist: linear.y ");
+  Serial.print(target_speed_lin_x);
+  Serial.print(", angular.z ");
+  Serial.println(target_speed_ang_z);
 
   if (msg->linear.y != 0) {
     Serial.print("Warning: /cmd_vel linear.y = ");
@@ -129,10 +134,10 @@ void twist_sub_callback(const void *msgin) {
   }
 
   Serial.print("linear.x ");
-  Serial.print(msg->linear.x, 3);
+  Serial.print(msg->linear.x);
   Serial.print(", angular.z ");
-  Serial.print(msg->angular.z, 3);
-  Serial.print("; target RPM R ");
+  Serial.print(msg->angular.z);
+  Serial.print("; RPM R ");
   Serial.print(ramp_target_rpm_right);
   Serial.print(" L ");
   Serial.println(ramp_target_rpm_left);
@@ -162,6 +167,9 @@ void twist_sub_callback(const void *msgin) {
 
   ramp_duration_us = max_abs_speed_diff * SPEED_DIFF_TO_US;
   ramp_start_time_us = esp_timer_get_time(); // Start speed ramp
+
+  Serial.print("ramp duration us ");
+  Serial.println(ramp_duration_us);
 
   updateSpeedRamp();
 }
@@ -217,7 +225,7 @@ void setup() {
 
   pinMode(YD_MOTOR_SCTP_PIN, INPUT);
   pinMode(YD_MOTOR_EN_PIN, OUTPUT);
-  enableMotor(false);
+  enableLDSMotor(false);
 
   if (!initWiFi(getSSID(), getPassw())) {
     digitalWrite(LED_PIN, HIGH);
@@ -297,6 +305,7 @@ static inline void initRos() {
     &twist_msg, &twist_sub_callback, ON_NEW_DATA), ERR_UROS_EXEC);
 
   resetTelemMsg();
+  drive.enable(true);
 }
 
 static inline bool initWiFi(String ssid, String passw) {
@@ -355,13 +364,13 @@ void spinTelem(bool force_pub) {
   publishTelem(step_time_us);
   telem_prev_pub_time_us = time_now_us;
 
-  if (++telem_pub_count % 5 == 0) {
+  if (++telem_pub_count % 10 == 0) {
     RCCHECK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(1)), ERR_UROS_SPIN);
     digitalWrite(LED_PIN, !digitalRead(LED_PIN));
-    //Serial.print("RPM L ");
-    //Serial.print(drive.getCurrentRPM(MOTOR_LEFT));
-    //Serial.print(" R ");
-    //Serial.println(drive.getCurrentRPM(MOTOR_RIGHT));
+    Serial.print("RPM L ");
+    Serial.print(drive.getCurrentRPM(MOTOR_LEFT));
+    Serial.print(" R ");
+    Serial.println(drive.getCurrentRPM(MOTOR_RIGHT));
   }
 
   #ifdef SPIN_TELEM_STATS
@@ -505,14 +514,20 @@ void spinPing() {
     rmw_ret_t rc = rmw_uros_ping_agent(1, 1);
     ping_prev_pub_time_us = time_now_us;
     Serial.println(rc == RCL_RET_OK ? "Ping OK" : "Ping error");
+    //i_println = 0;
   }
 }
 
 void loop() {
   if (WiFi.status() != WL_CONNECTED) {
-    enableMotor(false);
-    drive.setRPM(MOTOR_RIGHT, ramp_target_rpm_right);
-    drive.setRPM(MOTOR_LEFT, ramp_target_rpm_left);
+    bool drive_enabled = drive.isEnabled();
+
+    enableLDSMotor(false);
+    drive.enable(false);
+
+    if (drive_enabled)
+      error_loop(ERR_WIFI_LOST);
+ 
     return;
   }
 
@@ -668,7 +683,7 @@ int initLDS() {
 //  pinMode(YD_MOTOR_EN_PIN, OUTPUT);
 
   setMotorSpeed(YD_MOTOR_SPEED_DEFAULT);
-  enableMotor(false);
+  enableLDSMotor(false);
   while (LdSerial.read() >= 0) {};
   
   device_info deviceinfo;
@@ -753,7 +768,7 @@ int initLDS() {
       return -1;
     } else {
 //      isScanning = true;
-      enableMotor(true);
+      enableLDSMotor(true);
       Serial.println(F("lds.startScan() successful"));
       delay(1000);
     }
@@ -764,7 +779,8 @@ int initLDS() {
 void error_loop(int n_blinks){
   //Serial.print(F("error_loop() code "));
   //Serial.println(n_blinks);
-  enableMotor(false);
+  enableLDSMotor(false);
+  drive.enable(false);
 
   char buffer[40];
   sprintf(buffer, "Fatal error %d", n_blinks);  
