@@ -7,33 +7,36 @@ This firmware uses a Micro-ROS [library](https://github.com/kaiaai/micro_ros_ard
 
 ## Bringup
 
-![kaia-wifi screen](https://github.com/makerspet/kaiaai_snoopy/assets/143911662/71b32a97-adec-4f76-b97b-c47f91dce13e)
+- Launch Kaia.ai software stack on your PC, see instructions for
+[developers](https://github.com/kaiaai/docker/tree/main/kaia-ros-dev) (with ROS2 dev tools and GUI) and
+[end users](https://github.com/kaiaai/docker/tree/main/kaia-ros) (no dev tools, GUI).
 
 - Power up your ESP32 Dev Module.
 - When powered up for the first time after firmware upload:
-  - Your ESP32 Dev Module should set up a 2.4GHz WiFi network named `KAIA-WIFI`.
-  - Connect to `KAIA-WIFI` using your PC, smartphone or tablet. If your device has connections other than WiFi,
+  - Your ESP32 Dev Module should set up a 2.4GHz WiFi network named `KAIAAI-WIFI`.
+  - Connect to `KAIAAI-WIFI` using your PC, smartphone or tablet. If your device has connections other than WiFi,
     disable those other connections. For example, put your smartphone in "Airplane Mode", then enable WiFi and
-    connect to `KAIA-WIFI`. If prompted "This network has no internet access. Would you like to stay connected?",
+    connect to `KAIAAI-WIFI`. If prompted "This network has no internet access. Would you like to stay connected?",
     press "Yes".
-  - Your ESP32 module's LED should light up in solid color, no blinking, while `KAIA-WIFI` network is active.
-  - Open a browser and navigate to [http://192.168.4.1](http://192.168.4.1). You should see a WiFi configuration
+  - Your ESP32 module's LED should light up in solid color, no blinking, while `KAIAAI-WIFI` network is active.
+
+![esp32_wifi_manager_v2](https://github.com/makerspet/makerspet_snoopy/assets/143911662/6df0288d-7b60-4bf3-a4f6-45accb5bbd55)
+
+- Open a browser and navigate to [http://192.168.4.1](http://192.168.4.1). You should see a WiFi configuration
     page.
   - Enter your home WiFi credentials and press `Connect`.
   - Your ESP32 module will store your WiFi credentials in its permanent memory and will attempt
     connecting to your home WiFi.
   - If your ESP32 module fails to connect to your home WiFi (e.g. wrong password), your WiFi module will
-    recreate its `KAIA-WIFI` network, so you can retry the WiFi configuration steps above.
+    recreate its `KAIAAI-WIFI` network, so you can retry the WiFi configuration steps above.
   - Keep in mind that ESP32 works only with 2.4GHz networks. You will not be able to see or connect
     to any 5GHz networks.
-- Launch Kaia.ai software stack on your PC, see instructions for
-[end users](https://github.com/kaiaai/docker/tree/main/kaia-ros) and [developers](https://github.com/kaiaai/docker/tree/main/kaia-ros-dev).
-- Your ESP32 module should re-connect to your home WiFi using the credentials you have supplied, see instructions
-above.
-  - If your ESP32 module fails to connect to your home WiFi within 30 seconds, your WiFi module will
-    recreate its `KAIA-WIFI` network, so you can retry the WiFi configuration steps above.
-- Once connected to your home WiFi, your ESP32 module will attempt to connect to your PC running the Kaia.ai software stack.
-  - Upon successful connection your PC should print out some diagnostic information.
+
+![esp32_wifi_manager_response_v2](https://github.com/makerspet/makerspet_snoopy/assets/143911662/e670369a-0b22-463c-a6bd-4e617c4edc2d)
+
+- Once connected to your home WiFi, your ESP32 module will attempt to connect to your local PC running the
+Kaia.ai ROS2 software stack (in Docker).
+  - Upon successful connection your local PC should print out some diagnostic information.
 - If your ESP32 module fails to connect to your PC, your ESP32 module will report the error by blinking a number of times:
   - One long blink followed by a number of short blinks. Count the number of short blinks to determine the error code.
   - Once you have the error code, open `kaia-esp32.h` and look up the `ERR_*` label that matches the error code.
