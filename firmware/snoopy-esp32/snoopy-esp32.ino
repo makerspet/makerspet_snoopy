@@ -217,7 +217,7 @@ void setup() {
 
   pinMode(YD_MOTOR_SCTP_PIN, INPUT);
   pinMode(YD_MOTOR_EN_PIN, OUTPUT);
-  enableMotor(false);
+  enableLdsMotor(false);
 
   if (!initWiFi(getSSID(), getPassw())) {
     digitalWrite(LED_PIN, HIGH);
@@ -510,7 +510,7 @@ void spinPing() {
 
 void loop() {
   if (WiFi.status() != WL_CONNECTED) {
-    enableMotor(false);
+    enableLdsMotor(false);
     drive.setRPM(MOTOR_RIGHT, ramp_target_rpm_right);
     drive.setRPM(MOTOR_LEFT, ramp_target_rpm_left);
     return;
@@ -668,7 +668,7 @@ int initLDS() {
 //  pinMode(YD_MOTOR_EN_PIN, OUTPUT);
 
   setMotorSpeed(YD_MOTOR_SPEED_DEFAULT);
-  enableMotor(false);
+  enableLdsMotor(false);
   while (LdSerial.read() >= 0) {};
   
   device_info deviceinfo;
@@ -753,7 +753,7 @@ int initLDS() {
       return -1;
     } else {
 //      isScanning = true;
-      enableMotor(true);
+      enableLdsMotor(true);
       Serial.println(F("lds.startScan() successful"));
       delay(1000);
     }
@@ -764,7 +764,7 @@ int initLDS() {
 void error_loop(int n_blinks){
   //Serial.print(F("error_loop() code "));
   //Serial.println(n_blinks);
-  enableMotor(false);
+  enableLdsMotor(false);
 
   char buffer[40];
   sprintf(buffer, "Fatal error %d", n_blinks);  

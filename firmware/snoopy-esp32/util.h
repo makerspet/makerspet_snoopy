@@ -10,7 +10,7 @@ const float WHEEL_PERIM_LEN_DIV60_RECIP = 1/WHEEL_PERIM_LEN_DIV60;
 #define RPM_TO_SPEED(RPM) (RPM*WHEEL_PERIM_LEN_DIV60)
 
 
-void enableMotor(bool enable);
+void enableLdsMotor(bool enable);
 void blink(unsigned int delay_ms, unsigned int count);
 float absMin(float a, float b_abs);
 void printCurrentTime();
