@@ -40,7 +40,7 @@
 #define ERR_UROS_SPIN 8
 #define ERR_LDS_INIT  9
 
-#define ERR_REBOOT_AFTER_ID_CYCLES 5 // Reboot after showing error several times
+#define ERR_REBOOT_BLINK_CYCLES 3 // Blinki out an error a few times, then reboot
 #define LONG_BLINK_MS 1000
 #define LONG_BLINK_PAUSE_MS 2000
 #define SHORT_BLINK_MS 200

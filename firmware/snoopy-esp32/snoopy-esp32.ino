@@ -1,21 +1,10 @@
 // Scan publishes, WiFi AP works
 
-/*
-TODO check agent connection rclc_executor_spin_some() != RCL_RET_OK
-  call esp_wifi_disconnect() before reset/reboot
-
-sudo apt install ros-humble-geometry2
-ros2 topic list
-ros2 topic pub /cmd_vel geometry_msgs/msg/Twist
-  "{linear: {x: 0.1, y: 0.0, z: 0.0},
-  angular: {x: 0.0, y: 0.0, z: 1.0}}" -1
-
-TODO debug /odom NaN
-https://randomnerdtutorials.com/esp32-useful-wi-fi-functions-arduino/
-https://randomnerdtutorials.com/get-change-esp32-esp8266-mac-address-arduino/
-https://randomnerdtutorials.com/esp32-wi-fi-manager-asyncwebserver/
-*/
-//#define RMW_UXRCE_TRANSPORT_UDP
+//TODO check agent connection rclc_executor_spin_some() != RCL_RET_OK
+//  call esp_wifi_disconnect() before reset/reboot
+//TODO debug /odom NaN
+//TODO discover ROS2 PC automatically
+//  #define RMW_UXRCE_TRANSPORT_UDP
 
 #include "snoopy-esp32.h"
 #include "util.h"
@@ -759,8 +748,8 @@ int initLDS() {
 }
 
 void error_loop(int n_blinks){
-  Serial.print(F("error_loop() code "));
-  Serial.println(n_blinks);
+  //Serial.print(F("error_loop() code "));
+  //Serial.println(n_blinks);
   enableMotor(false);
 
   char buffer[40];
@@ -768,7 +757,7 @@ void error_loop(int n_blinks){
   logMsg(buffer, rcl_interfaces__msg__Log__FATAL);
 
   unsigned int i = 0;
-  while(i++ < ERR_REBOOT_AFTER_ID_CYCLES){
+  while(i++ < ERR_REBOOT_BLINK_CYCLES){
     blink(LONG_BLINK_MS, 1);
     digitalWrite(LED_PIN, LOW);
     delay(SHORT_BLINK_PAUSE_MS);

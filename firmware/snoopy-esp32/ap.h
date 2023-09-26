@@ -9,12 +9,16 @@
 
 #define SSID_AP "KAIAAI-WIFI"
 
+// Search for parameter in HTTP POST request
+#define PARAM_INPUT_SSID "ssid"
+#define PARAM_INPUT_PASS "pass"
+#define PARAM_INPUT_DEST_IP "dest_ip"
+#define PARAM_INPUT_DEST_PORT "dest_port"
+
 void initSPIFFS();
 void ObtainWiFiCreds(void (*callback)());
 String getSSID();
 String getPassw();
-String getIP();
-String getGateway();
 String getDestIP();
 String getDestPort();
 
