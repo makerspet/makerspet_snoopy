@@ -33,7 +33,8 @@ String readFile(fs::FS &fs, const char * path) {
 // Initialize SPIFFS
 void initSPIFFS() {
   if (!SPIFFS.begin(true)) {
-    Serial.println("An error has occurred while mounting SPIFFS");
+    Serial.println("Error mounting SPIFFS");
+    return;
   }
   Serial.println("SPIFFS mounted successfully");
 
@@ -43,10 +44,15 @@ void initSPIFFS() {
   dest_ip = readFile(SPIFFS, destIpPath);
   dest_port = readFile(SPIFFS, destPortPath);
 
-  Serial.println(ssid);
-  Serial.println(pass);
-  Serial.println(dest_ip);
-  Serial.println(dest_port);
+  Serial.print("ssid='");
+  Serial.print(ssid);
+  Serial.print("' pass='");
+  Serial.print(pass);
+  Serial.print("' dest_ip='");
+  Serial.print(dest_ip);
+  Serial.print("' dest_port='");
+  Serial.print(dest_port);
+  Serial.println("'");
 }
 
 // Write file to SPIFFS
@@ -133,7 +139,10 @@ void ObtainWiFiCreds(void (*callback)()) {
       "<p>Destination IP: " + dest_ip + "</p>"
       "<p>Destination Port: " + dest_port + "</p>"
       "</center></BODY></HTML>");
-    delay(3000);
+    //delay(3000);
+    unsigned long ms = millis();
+    while(millis() - ms < 3000)
+      yield();
     ESP.restart();
   });
   server.begin();

@@ -56,8 +56,8 @@ uint8_t lds_buf[LDS_BUF_LEN] = {0};
 
 unsigned long telem_prev_pub_time_us = 0;
 unsigned long ping_prev_pub_time_us = 0;
-unsigned long telem_pub_period_us = 50000;
-unsigned long ping_pub_period_us = 10000000;
+unsigned long telem_pub_period_us = TELEM_PUB_PERIOD_MS*1000;
+unsigned long ping_pub_period_us = PING_PUB_PERIOD_MS*1000;
 
 unsigned long ramp_duration_us = 0;
 unsigned long ramp_start_time_us = 0;
@@ -67,6 +67,11 @@ float ramp_target_rpm_right = 0;
 float ramp_target_rpm_left = 0;
 
 bool ramp_enabled = true;
+
+#ifdef SPIN_TELEM_STATS
+unsigned long stat_sum_spin_telem_period_us = 0;
+unsigned long stat_max_spin_telem_period_us = 0;
+#endif
 
 void twist_sub_callback(const void *msgin) {
   const geometry_msgs__msg__Twist * msg = (const geometry_msgs__msg__Twist *)msgin;
@@ -158,6 +163,9 @@ void twist_sub_callback(const void *msgin) {
   ramp_duration_us = max_abs_speed_diff * SPEED_DIFF_TO_US;
   ramp_start_time_us = esp_timer_get_time(); // Start speed ramp
 
+  Serial.print("ramp duration us ");
+  Serial.println(ramp_duration_us);
+
   updateSpeedRamp();
 }
 
@@ -212,7 +220,7 @@ void setup() {
 
   pinMode(YD_MOTOR_SCTP_PIN, INPUT);
   pinMode(YD_MOTOR_EN_PIN, OUTPUT);
-  enableMotor(false);
+  enableLDSMotor(false);
 
   if (!initWiFi(getSSID(), getPassw())) {
     digitalWrite(LED_PIN, HIGH);
@@ -292,6 +300,7 @@ static inline void initRos() {
     &twist_msg, &twist_sub_callback, ON_NEW_DATA), ERR_UROS_EXEC);
 
   resetTelemMsg();
+  drive.enable(true);
 }
 
 static inline bool initWiFi(String ssid, String passw) {
@@ -339,7 +348,6 @@ static inline bool initWiFi(String ssid, String passw) {
   return true;
 }
 
-int i_println=0;
 void spinTelem(bool force_pub) {
   static int telem_pub_count = 0;
   unsigned long time_now_us = esp_timer_get_time();
@@ -351,20 +359,31 @@ void spinTelem(bool force_pub) {
   publishTelem(step_time_us);
   telem_prev_pub_time_us = time_now_us;
 
-  if (++telem_pub_count % 5 == 0) {
+  if (++telem_pub_count % 10 == 0) {
     RCCHECK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(1)), ERR_UROS_SPIN);
     digitalWrite(LED_PIN, !digitalRead(LED_PIN));
-    //Serial.print("RPM L ");
-    //Serial.print(drive.getCurrentRPM(MOTOR_LEFT));
-    //Serial.print(" R ");
-    //Serial.println(drive.getCurrentRPM(MOTOR_RIGHT));
+    Serial.print("RPM L ");
+    Serial.print(drive.getCurrentRPM(MOTOR_LEFT));
+    Serial.print(" R ");
+    Serial.println(drive.getCurrentRPM(MOTOR_RIGHT));
   }
 
-  Serial.print(step_time_us / 1000);  
-  if (++i_println % 30 == 0)
-    Serial.println();
-  else
-    Serial.print(" ");
+  #ifdef SPIN_TELEM_STATS
+  stat_sum_spin_telem_period_us += step_time_us;
+  stat_max_spin_telem_period_us = stat_max_spin_telem_period_us <= step_time_us ?
+    step_time_us : stat_max_spin_telem_period_us;
+  
+  // How often telemetry gets published
+  if (++telem_pub_count % SPIN_TELEM_STATS == 0) {
+    Serial.print("spinTelem() period avg ");
+    Serial.print(stat_sum_spin_telem_period_us / (1000*SPIN_TELEM_STATS));
+    Serial.print(" max ");
+    Serial.print(stat_max_spin_telem_period_us / 1000);
+    Serial.println("ms");
+    stat_sum_spin_telem_period_us = 0;
+    stat_max_spin_telem_period_us = 0;
+  }
+  #endif
 }
 
 void publishTelem(unsigned long step_time_us)
@@ -490,15 +509,20 @@ void spinPing() {
     rmw_ret_t rc = rmw_uros_ping_agent(1, 1);
     ping_prev_pub_time_us = time_now_us;
     Serial.println(rc == RCL_RET_OK ? "Ping OK" : "Ping error");
-    i_println = 0;
+    //i_println = 0;
   }
 }
 
 void loop() {
   if (WiFi.status() != WL_CONNECTED) {
-    enableMotor(false);
-    drive.setRPM(MOTOR_RIGHT, ramp_target_rpm_right);
-    drive.setRPM(MOTOR_LEFT, ramp_target_rpm_left);
+    bool drive_enabled = drive.isEnabled();
+
+    enableLDSMotor(false);
+    drive.enable(false);
+
+    if (drive_enabled)
+      error_loop(ERR_WIFI_LOST);
+ 
     return;
   }
 
@@ -654,7 +678,7 @@ int initLDS() {
 //  pinMode(YD_MOTOR_EN_PIN, OUTPUT);
 
   setMotorSpeed(YD_MOTOR_SPEED_DEFAULT);
-  enableMotor(false);
+  enableLDSMotor(false);
   while (LdSerial.read() >= 0) {};
   
   device_info deviceinfo;
@@ -739,7 +763,7 @@ int initLDS() {
       return -1;
     } else {
 //      isScanning = true;
-      enableMotor(true);
+      enableLDSMotor(true);
       Serial.println(F("lds.startScan() successful"));
       delay(1000);
     }
@@ -750,7 +774,8 @@ int initLDS() {
 void error_loop(int n_blinks){
   //Serial.print(F("error_loop() code "));
   //Serial.println(n_blinks);
-  enableMotor(false);
+  enableLDSMotor(false);
+  drive.enable(false);
 
   char buffer[40];
   sprintf(buffer, "Fatal error %d", n_blinks);  

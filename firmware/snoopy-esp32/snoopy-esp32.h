@@ -39,12 +39,17 @@
 #define ERR_UROS_EXEC 7
 #define ERR_UROS_SPIN 8
 #define ERR_LDS_INIT  9
+#define ERR_WIFI_LOST  10
 
 #define ERR_REBOOT_BLINK_CYCLES 3 // Blinki out an error a few times, then reboot
 #define LONG_BLINK_MS 1000
 #define LONG_BLINK_PAUSE_MS 2000
 #define SHORT_BLINK_MS 200
 #define SHORT_BLINK_PAUSE_MS 500
+
+#define TELEM_PUB_PERIOD_MS 50
+#define SPIN_TELEM_STATS 100 // Undefine for debug
+#define PING_PUB_PERIOD_MS 10000
 
 #if !defined(ESP32)
   #error This code builds on ESP32 Dev module only

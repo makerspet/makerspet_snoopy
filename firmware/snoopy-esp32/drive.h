@@ -57,6 +57,8 @@ class DriveController
     void setKd(unsigned char motorID, float k);
     void setProportionalMode(unsigned char motorID, bool onMeasurement);
     void setPWMFreq(unsigned char motorID, unsigned short int freq);
+    void enable(bool enabled);
+    bool isEnabled();
 
     double getCurrentRPM(unsigned char motorID);
     double getTargetRPM(unsigned char motorID);
@@ -88,6 +90,7 @@ class DriveController
     unsigned char pwmPin[MOTOR_COUNT];
     unsigned char cwPin[MOTOR_COUNT];
 
+    bool enabled;
     bool switchingCw[MOTOR_COUNT];
     logFuncT logDebug;
 };
