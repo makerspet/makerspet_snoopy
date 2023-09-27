@@ -233,27 +233,8 @@ void setup() {
     return;
   }
 
-//  set_microros_wifi_transports((char*)MICRO_ROS_AGENT_IP, MICRO_ROS_AGENT_PORT);
-  while (true) {
-    if (WiFi.status() != WL_CONNECTED) {
-      Serial.println("WiFi disconnected while connecting to Micro-ROS. Rebooting...");
-      Serial.flush();
-      ESP.restart();
-    }
-
-    int err = set_microros_wifi_transports(getDestIP().c_str(), getDestPort().toInt());
-    Serial.print("err=");
-    Serial.println(err);
-    if (err == 0) {
-      delaySpin(2000);
-      break;
-    } else {
-      Serial.print("Micro-ROS connection failed, err=");
-      Serial.print(micro_ros_error_string(err));
-      Serial.println(". Retrying...");
-      blink_error_code(ERR_UROS_WIFI_TRANSPORTS);
-    }
-  }
+  set_microros_wifi_transports((char*)MICRO_ROS_AGENT_IP, MICRO_ROS_AGENT_PORT);
+  delaySpin(2000);
 
   initRos();
   logMsgInfo((char*)"Micro-ROS initialized");
@@ -292,10 +273,17 @@ static inline void initRos() {
   RCCHECK(rmw_uros_options_set_client_key(UROS_CLIENT_KEY, rmw_options),
     ERR_UROS_INIT); // TODO multiple bots
 
-  Serial.println(F("Connecting to Micro-ROS agent ..."));
+  Serial.print(F("Connecting to Micro-ROS agent ... "));
   //RCCHECK(rclc_support_init(&support, 0, NULL, &allocator), ERR_UROS_AGENT_CONN);
-  RCCHECK(rclc_support_init_with_options(&support, 0, NULL,
-    &init_options, &allocator), ERR_UROS_AGENT_CONN);
+  //RCCHECK(rclc_support_init_with_options(&support, 0, NULL,
+  //  &init_options, &allocator), ERR_UROS_AGENT_CONN);
+  rcl_ret_t temp_rc = rclc_support_init_with_options(&support, 0, NULL,
+    &init_options, &allocator);
+  if (temp_rc != RCL_RET_OK) {
+    Serial.println("failed");
+    error_loop(ERR_UROS_AGENT_CONN);
+  }
+  Serial.println("success");
 
   syncRosTime();
   printCurrentTime();
@@ -638,27 +626,29 @@ static inline void logMsgInfo(char* msg) {
 }
 
 void logMsg(char* msg, uint8_t severity_level) {
-  rcl_interfaces__msg__Log msgLog;
-  // https://docs.ros2.org/foxy/api/rcl_interfaces/msg/Log.html
-  // builtin_interfaces__msg__Time stamp;
-  struct timespec tv = {0};
-  clock_gettime(CLOCK_REALTIME, &tv);
-  msgLog.stamp.sec = tv.tv_sec;
-  msgLog.stamp.nanosec = tv.tv_nsec;
+  if (WiFi.status() != WL_CONNECTED) {
+    rcl_interfaces__msg__Log msgLog;
+    // https://docs.ros2.org/foxy/api/rcl_interfaces/msg/Log.html
+    // builtin_interfaces__msg__Time stamp;
+    struct timespec tv = {0};
+    clock_gettime(CLOCK_REALTIME, &tv);
+    msgLog.stamp.sec = tv.tv_sec;
+    msgLog.stamp.nanosec = tv.tv_nsec;
+    
+    msgLog.level = severity_level;
+    msgLog.name.data = (char*)UROS_NODE_NAME; // Logger name
+    msgLog.name.size = strlen(msgLog.name.data);
+    msgLog.msg.data = msg;
+    msgLog.msg.size = strlen(msgLog.msg.data);
+    //char fileName[] = __FILE__;
+    msgLog.file.data = (char*)""; // Source code file name
+    msgLog.file.size = strlen(msgLog.file.data);
+    msgLog.function.data = (char*)""; // Source code function name
+    msgLog.function.size = strlen(msgLog.function.data);
+    msgLog.line = 0; // Source code line number
+    RCSOFTCHECK(rcl_publish(&log_pub, &msgLog, NULL));
+  }
   
-  msgLog.level = severity_level;
-  msgLog.name.data = (char*)UROS_NODE_NAME; // Logger name
-  msgLog.name.size = strlen(msgLog.name.data);
-  msgLog.msg.data = msg;
-  msgLog.msg.size = strlen(msgLog.msg.data);
-  //char fileName[] = __FILE__;
-  msgLog.file.data = (char*)""; // Source code file name
-  msgLog.file.size = strlen(msgLog.file.data);
-  msgLog.function.data = (char*)""; // Source code function name
-  msgLog.function.size = strlen(msgLog.function.data);
-  msgLog.line = 0; // Source code line number
-  RCSOFTCHECK(rcl_publish(&log_pub, &msgLog, NULL));
-
   String s = "UNDEFINED";
   switch(severity_level) {
     case rcl_interfaces__msg__Log__INFO:
@@ -802,15 +792,16 @@ void blink_error_code(int n_blinks) {
 }
 
 void error_loop(int n_blinks){
-  //Serial.print(F("error_loop() code "));
-  //Serial.println(n_blinks);
   enableLdsMotor(false);
 
   char buffer[40];
-  sprintf(buffer, "Fatal error %d", n_blinks);  
+  sprintf(buffer, "Error code %d", n_blinks);  
   logMsg(buffer, rcl_interfaces__msg__Log__FATAL);
 
   blink_error_code(n_blinks);
+
+  Serial.println("Rebooting...");
+  Serial.flush();
 
   ESP.restart();
 }

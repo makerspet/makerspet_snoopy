@@ -31,16 +31,15 @@
 
 // ESP32 blinks when firmware init fails
 #define ERR_WIFI_CONN 1
-#define ERR_UROS_WIFI_TRANSPORTS 2
+#define ERR_LDS_INIT 2
 #define ERR_UROS_AGENT_CONN 3
 #define ERR_WIFI_LOST 4
-#define ERR_LDS_INIT 5
-#define ERR_UROS_TIME_SYNC 6
-#define ERR_UROS_NODE 7
-#define ERR_UROS_PUBSUB 8
-#define ERR_UROS_EXEC 9
+#define ERR_UROS_INIT 5
+#define ERR_UROS_NODE 6
+#define ERR_UROS_PUBSUB 7
+#define ERR_UROS_EXEC 8
+#define ERR_UROS_TIME_SYNC 9
 #define ERR_UROS_SPIN 10
-#define ERR_UROS_INIT 11
 
 #define ERR_REBOOT_BLINK_CYCLES 3 // Blinki out an error a few times, then reboot
 #define LONG_BLINK_MS 1000
