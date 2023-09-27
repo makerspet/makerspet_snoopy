@@ -57,6 +57,7 @@ Kaia.ai ROS2 software stack (in Docker).
     connection.
   - Once the WiFi connection succeed, keep inspecting the Serial Monitor's debug output
     as ESP32 attempts connecting to your local PC.
+- Try resetting your ESP32 by pushing the `En` button. Sometimes this fixes WiFi connection problems.
 - Try "factory-resetting" your ESP32, see instructions below.
 - Try turning your router or hotspot off and on. My personal Google Pixel 7's hotspot has a bug
   that prevents ESP32 (as well as my laptop) re-connecting successfully. Only the first
