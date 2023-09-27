@@ -87,7 +87,7 @@ Kaia.ai ROS2 software stack (in Docker).
 ## Factory reset
 You can wipe out stored settings, including WiFi SSID and password, as follows:
 - press and release ESP32 `EN` (reset) button
-- press and hold ESP32 `Boot` button for at least 5 seconds
+- press and hold ESP32 `Boot` button for at least 6 seconds
 - release ESP32 Boot button
 - ESP32 should blink, 5 times slowly - 1 blink per 2 seconds
 - ESP32 will reboot after that and reenter its WiFi configuration mode
