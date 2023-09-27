@@ -242,6 +242,8 @@ void setup() {
     }
 
     int err = set_microros_wifi_transports(getDestIP().c_str(), getDestPort().toInt());
+    Serial.print("err=");
+    Serial.println(err);
     if (err == 0) {
       delaySpin(2000);
       break;
