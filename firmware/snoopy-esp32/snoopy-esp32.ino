@@ -207,6 +207,14 @@ void logInfo(char* msg) {
   Serial.println(msg);
 }
 
+void delaySpin(unsigned long msec) {
+  unsigned long time_msec = millis();
+  while(millis() - time_msec < msec) {
+    spinResetSettings();
+    yield();
+  }
+}
+
 void setup() {
   Serial.begin(115200);
 
@@ -226,9 +234,24 @@ void setup() {
   }
 
 //  set_microros_wifi_transports((char*)MICRO_ROS_AGENT_IP, MICRO_ROS_AGENT_PORT);
-  set_microros_wifi_transports(getDestIP().c_str(), getDestPort().toInt());
+  while (true) {
+    if (WiFi.status() != WL_CONNECTED) {
+      Serial.println("WiFi disconnected while connecting to Micro-ROS. Rebooting...");
+      Serial.flush();
+      ESP.restart();
+    }
 
-  delay(2000);
+    int err = set_microros_wifi_transports(getDestIP().c_str(), getDestPort().toInt());
+    if (err == 0) {
+      delaySpin(2000);
+      break;
+    } else {
+      Serial.print("Micro-ROS connection failed, err=");
+      Serial.print(micro_ros_error_string(err));
+      Serial.println(". Retrying...");
+      blink_error_code(ERR_UROS_WIFI_TRANSPORTS);
+    }
+  }
 
   initRos();
   logMsgInfo((char*)"Micro-ROS initialized");
@@ -761,15 +784,7 @@ int initLDS() {
   return 0;
 }
 
-void error_loop(int n_blinks){
-  //Serial.print(F("error_loop() code "));
-  //Serial.println(n_blinks);
-  enableLdsMotor(false);
-
-  char buffer[40];
-  sprintf(buffer, "Fatal error %d", n_blinks);  
-  logMsg(buffer, rcl_interfaces__msg__Log__FATAL);
-
+void blink_error_code(int n_blinks) {
   unsigned int i = 0;
   while(i++ < ERR_REBOOT_BLINK_CYCLES){
     blink(LONG_BLINK_MS, 1);
@@ -782,5 +797,18 @@ void error_loop(int n_blinks){
       spinResetSettings();
     }
   }
+}
+
+void error_loop(int n_blinks){
+  //Serial.print(F("error_loop() code "));
+  //Serial.println(n_blinks);
+  enableLdsMotor(false);
+
+  char buffer[40];
+  sprintf(buffer, "Fatal error %d", n_blinks);  
+  logMsg(buffer, rcl_interfaces__msg__Log__FATAL);
+
+  blink_error_code(n_blinks);
+
   ESP.restart();
 }

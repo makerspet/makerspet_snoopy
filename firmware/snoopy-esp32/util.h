@@ -17,6 +17,8 @@ void printCurrentTime();
 void setMotorSpeed(int16_t speed);
 void twistToWheelSpeeds(float speed_lin_x, float speed_ang_z,
   float *speed_right, float *speed_left);
+void delayYield(unsigned long msec);
+String micro_ros_error_string(int err);
 
 String reset_reason_to_string(int reason, bool verbose=false);
 

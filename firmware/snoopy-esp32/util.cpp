@@ -69,6 +69,12 @@ void twistToWheelSpeeds(float speed_lin_x, float speed_ang_z,
   *speed_left  = speed_lin_x - ang_component;
 }
 
+void delayYield(unsigned long msec) {
+    unsigned long time_msec = millis();
+    while(millis() - time_msec < msec)
+      yield();
+}
+
 String reset_reason_to_string(int reason, bool verbose) {
   if (verbose) {
     switch ( reason)
@@ -110,5 +116,17 @@ String reset_reason_to_string(int reason, bool verbose) {
       case 16 : return ("RTCWDT_RTC_RESET");
       default : return ("NO_MEAN");
     }
+  }
+}
+
+String micro_ros_error_string(int err) {
+  String errCode = String(err);
+  switch (err)
+  {
+    case 0 : return ("RMW_RET_OK");
+    case 1 : return ("RMW_RET_ERROR");
+    case 2 : return ("RMW_RET_TIMEOUT");
+    case 23 : return ("RMW_GID_STORAGE_SIZE");
+    default : return errCode;
   }
 }
