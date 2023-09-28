@@ -1,7 +1,6 @@
 // Scan publishes, WiFi AP works
 
 //TODO check agent connection rclc_executor_spin_some() != RCL_RET_OK
-//  call esp_wifi_disconnect() before reset/reboot
 //TODO debug /odom NaN
 //TODO discover ROS2 PC automatically
 //  #define RMW_UXRCE_TRANSPORT_UDP
@@ -91,6 +90,8 @@ void twist_sub_callback(const void *msgin) {
 
   twistToWheelSpeeds(target_speed_lin_x, target_speed_ang_z,
     &twist_target_speed_right, &twist_target_speed_left);
+
+  twist_target_speed_left = -twist_target_speed_left;
 
   // Wheel speeds to RPM
   float twist_target_rpm_right = SPEED_TO_RPM(twist_target_speed_right);
@@ -233,9 +234,10 @@ void setup() {
     return;
   }
 
-  set_microros_wifi_transports((char*)MICRO_ROS_AGENT_IP, MICRO_ROS_AGENT_PORT);
-  delaySpin(2000);
+  set_microros_wifi_transports(getDestIP().c_str(), getDestPort().toInt());
 
+  delay(2000);
+  
   initRos();
   logMsgInfo((char*)"Micro-ROS initialized");
   
