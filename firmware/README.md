@@ -92,6 +92,8 @@ You can wipe out stored settings, including WiFi SSID and password, as follows:
 - release ESP32 Boot button
 - ESP32 should blink, 5 times slowly - 1 blink per 2 seconds
 - ESP32 will reboot after that and reenter its WiFi configuration mode
+- Every time you upload firmware to your ESP32, the stored WiFi settings get wiped.
+- Make sure you are connecting ESP32 to a 2.4GHz network. ESP32 does not support 5GHz networks.
 
 ## Modding the robot and its firmware
 - Start with an existing Kaia.ai robot, e.g. [Snoopy](https://github.com/kaiaai/kaia_descriptions/)
