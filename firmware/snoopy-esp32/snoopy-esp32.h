@@ -1,5 +1,5 @@
-#ifndef KAIA_ESP32
-#define KAIA_ESP32
+#ifndef SNOOPY_ESP32
+#define SNOOPY_ESP32
 
 // ESP32 pin assignment
 #define LED_PIN 2
@@ -10,19 +10,22 @@
 #define YD_MOTOR_SCTP_PWM_CHANNEL 0  // ESP32 PWM channel
 
 // Micro-ROS config
-#define MICRO_ROS_AGENT_PORT 8888
-#define MICRO_ROS_AGENT_IP "192.168.1.112" // "192.168.226.157"
 #define UROS_CLIENT_KEY 0xCA1AA100
 #define UROS_TELEM_TOPIC_NAME "telemetry"
 #define UROS_LOG_TOPIC_NAME "rosout"
 #define UROS_CMD_VEL_TOPIC_NAME "cmd_vel"
-#define UROS_NODE_NAME "kaia_esp32_arduino_microros"
+#define UROS_NODE_NAME "snoopy_esp32_arduino_microros"
+#define UROS_PING_PUB_PERIOD_MS 10000
+#define UROS_TELEM_PUB_PERIOD_MS 50
+#define UROS_TIME_SYNC_TIMEOUT_MS 1000
+
 #define JOINTS_LEN (MOTOR_COUNT)
 #define LDS_BUF_LEN 400
+#define LDS_SERIAL_BAUD 128000  // YDLIDAR X4
 
 // WiFi config
-#define WIFI_CONN_TIMEOUT_MS 30000
-#define RESET_SETTINGS_HOLD_SECONDS 5 // Hold button this long to reset WiFi
+#define WIFI_CONN_TIMEOUT_SEC 30
+#define RESET_SETTINGS_HOLD_SEC 5 // Hold button this long to reset WiFi
 
 // Motors config
 #define WHEEL_DIA (2*33.5e-3) // meters
@@ -59,4 +62,4 @@ void serial_callback(char c);
 void scan_callback(uint8_t quality, float angle_deg,
   float distance_mm, bool startBit);
 
-#endif  // KAIA_ESP32
+#endif  // SNOOPY_ESP32
