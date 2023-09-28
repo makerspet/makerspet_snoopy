@@ -428,7 +428,7 @@ void calcOdometry(unsigned long step_time_us, float joint_pos_delta_right,
     return;
   // https://automaticaddison.com/how-to-publish-wheel-odometry-information-over-ros/
   float distance_right = joint_pos_delta_right * WHEEL_RADIUS;
-  float distance_left = joint_pos_delta_left * WHEEL_RADIUS;
+  float distance_left = -joint_pos_delta_left * WHEEL_RADIUS;
 
   // TODO use Runge-Kutta integration for better accuracy
   float average_distance = (distance_right + distance_left) * 0.5;
@@ -525,8 +525,8 @@ void spinPing() {
 void loop() {
   if (WiFi.status() != WL_CONNECTED) {
     enableLdsMotor(false);
-    drive.setRPM(MOTOR_RIGHT, ramp_target_rpm_right);
-    drive.setRPM(MOTOR_LEFT, ramp_target_rpm_left);
+    drive.setRPM(MOTOR_RIGHT, 0);
+    drive.setRPM(MOTOR_LEFT, 0);
     return;
   }
 
