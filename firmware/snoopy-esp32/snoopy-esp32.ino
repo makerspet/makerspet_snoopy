@@ -144,16 +144,8 @@ void twist_sub_callback(const void *msgin) {
   }
 
   // Calculate change in speeds
-  ramp_start_rpm_right = drive.getCurrentRPM(MOTOR_RIGHT);
-  ramp_start_rpm_left = drive.getCurrentRPM(MOTOR_LEFT);
-  Serial.print("getCurrentRPM(MOTOR_RIGHT) ");
-  Serial.print (ramp_start_rpm_right);
-  Serial.print(" getCurrentRPM(MOTOR_LEFT) ");
-  Serial.println(ramp_start_rpm_left);
-  Serial.print("getTargetPM(MOTOR_RIGHT) ");
-  Serial.print (drive.getTargetRPM(MOTOR_RIGHT));
-  Serial.print(" getTargetRPM(MOTOR_LEFT) ");
-  Serial.println(drive.getTargetRPM(MOTOR_LEFT));
+  ramp_start_rpm_right = drive.getTargetRPM(MOTOR_RIGHT);
+  ramp_start_rpm_left = drive.getTargetRPM(MOTOR_LEFT);
   
   float ramp_start_speed_right = RPM_TO_SPEED(ramp_start_rpm_right);
   float ramp_start_speed_left = RPM_TO_SPEED(ramp_start_rpm_left);

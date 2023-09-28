@@ -1,6 +1,11 @@
 #ifndef SNOOPY_ESP32
 #define SNOOPY_ESP32
 
+// Motors config
+#define WHEEL_DIA (2*33.5e-3) // meters
+#define WHEEL_BASE ((291.794-29)*1e-3) // wheel base, meters
+#define MAX_WHEEL_ACCEL 2.0   // wheel vs floor m2/sec
+
 // ESP32 pin assignment
 #define LED_PIN 2
 #define YD_MOTOR_SCTP_PIN 15 // 2 PWM pin for control the speed of YDLIDAR's motor. 
@@ -26,11 +31,6 @@
 // WiFi config
 #define WIFI_CONN_TIMEOUT_SEC 30
 #define RESET_SETTINGS_HOLD_SEC 5 // Hold button this long to reset WiFi
-
-// Motors config
-#define WHEEL_DIA (2*33.5e-3) // meters
-#define WHEEL_BASE ((291.794-29)*1e-3) // wheel base, meters
-#define MAX_WHEEL_ACCEL 1.0   // wheel vs floor m2/sec
 
 // ESP32 blinks when firmware init fails
 #define ERR_WIFI_CONN 1
