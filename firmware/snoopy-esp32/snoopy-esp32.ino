@@ -55,8 +55,8 @@ uint8_t lds_buf[LDS_BUF_LEN] = {0};
 
 unsigned long telem_prev_pub_time_us = 0;
 unsigned long ping_prev_pub_time_us = 0;
-unsigned long telem_pub_period_us = 50000;
-unsigned long ping_pub_period_us = 10000000;
+unsigned long telem_pub_period_us = UROS_TELEM_PUB_PERIOD_MS*1000;
+unsigned long ping_pub_period_us = UROS_PING_PUB_PERIOD_MS*1000;
 
 unsigned long ramp_duration_us = 0;
 unsigned long ramp_start_time_us = 0;
@@ -146,6 +146,14 @@ void twist_sub_callback(const void *msgin) {
   // Calculate change in speeds
   ramp_start_rpm_right = drive.getCurrentRPM(MOTOR_RIGHT);
   ramp_start_rpm_left = drive.getCurrentRPM(MOTOR_LEFT);
+  Serial.print("getCurrentRPM(MOTOR_RIGHT) ");
+  Serial.print (ramp_start_rpm_right);
+  Serial.print(" getCurrentRPM(MOTOR_LEFT) ");
+  Serial.println(ramp_start_rpm_left);
+  Serial.print("getTargetPM(MOTOR_RIGHT) ");
+  Serial.print (drive.getTargetRPM(MOTOR_RIGHT));
+  Serial.print(" getTargetRPM(MOTOR_LEFT) ");
+  Serial.println(drive.getTargetRPM(MOTOR_LEFT));
   
   float ramp_start_speed_right = RPM_TO_SPEED(ramp_start_rpm_right);
   float ramp_start_speed_left = RPM_TO_SPEED(ramp_start_rpm_left);
@@ -339,7 +347,7 @@ static inline bool initWiFi(String ssid, String passw) {
   unsigned long startMillis = millis();
 
   while (WiFi.status() != WL_CONNECTED) {
-    if (millis() - startMillis >= WIFI_CONN_TIMEOUT_MS) {
+    if (millis() - startMillis >= WIFI_CONN_TIMEOUT_SEC*1000) {
       Serial.println(" timed out");
       return false;
     }
@@ -370,14 +378,13 @@ void spinTelem(bool force_pub) {
   publishTelem(step_time_us);
   telem_prev_pub_time_us = time_now_us;
 
-  if (++telem_pub_count % 5 == 0) {
-    RCCHECK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(1)), ERR_UROS_SPIN);
-    digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+  digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+  //if (++telem_pub_count % 5 == 0) {
     //Serial.print("RPM L ");
     //Serial.print(drive.getCurrentRPM(MOTOR_LEFT));
     //Serial.print(" R ");
     //Serial.println(drive.getCurrentRPM(MOTOR_RIGHT));
-  }
+  //}
 
   #ifdef SPIN_TELEM_STATS
   stat_sum_spin_telem_period_us += step_time_us;
@@ -532,10 +539,14 @@ void loop() {
   }
 
   spinLDS();
+  
+  // Process micro-ROS callbacks
+  RCCHECK(rclc_executor_spin_some(&executor, RCL_MS_TO_NS(1)), ERR_UROS_SPIN);
+
   spinTelem(false);
   spinPing();
   spinResetSettings();
-  updateSpeedRamp(); // slow down?
+  updateSpeedRamp(); // update ramp less frequently?
   drive.update();
 }
 
@@ -559,7 +570,7 @@ void spinResetSettings() {
   if (step_time_ms >= reset_settings_check_period_ms) {
 
     bool button_pressed = !digitalRead(0);
-    if (button_pressed && button_pressed_seconds > RESET_SETTINGS_HOLD_SECONDS)
+    if (button_pressed && button_pressed_seconds > RESET_SETTINGS_HOLD_SEC)
       resetSettings();
 
     button_pressed_seconds = button_pressed ? button_pressed_seconds + 1 : 0;
@@ -596,7 +607,7 @@ void resetTelemMsg()
 }
 
 void syncRosTime() {
-  const int timeout_ms = 1000;
+  const int timeout_ms = UROS_TIME_SYNC_TIMEOUT_MS;
 
   Serial.print("Syncing time ... ");
   RCCHECK(rmw_uros_sync_session(timeout_ms), ERR_UROS_TIME_SYNC);
@@ -678,7 +689,7 @@ void logMsg(char* msg, uint8_t severity_level) {
 int initLDS() {
   Serial.print("LDS RX buffer size "); // default 128 hw + 256 sw
   Serial.println(LdSerial.setRxBufferSize(1024)); // must be before .begin()
-  lds.begin(LdSerial, 128000);
+  lds.begin(LdSerial, LDS_SERIAL_BAUD);
   ledcSetup(0, 10000, 8);
   ledcAttachPin(YD_MOTOR_SCTP_PIN, 0);
 //  pinMode(YD_MOTOR_SCTP_PIN, INPUT);
