@@ -1,6 +1,6 @@
 // Scan publishes, WiFi AP works
 
-//TODO check agent connection rclc_executor_spin_some() != RCL_RET_OK
+//TODO detect micro-ros agent disconnect
 //TODO debug /odom NaN
 //TODO discover ROS2 PC automatically
 //  #define RMW_UXRCE_TRANSPORT_UDP
@@ -427,12 +427,12 @@ void calcOdometry(unsigned long step_time_us, float joint_pos_delta_right,
   if (step_time_us == 0)
     return;
   // https://automaticaddison.com/how-to-publish-wheel-odometry-information-over-ros/
-  float distance_right = joint_pos_delta_right * WHEEL_RADIUS;
-  float distance_left = -joint_pos_delta_left * WHEEL_RADIUS;
+  float distance_right = -joint_pos_delta_right * WHEEL_RADIUS;
+  float distance_left = joint_pos_delta_left * WHEEL_RADIUS;
 
   // TODO use Runge-Kutta integration for better accuracy
   float average_distance = (distance_right + distance_left) * 0.5;
-  float d_yaw = asin((distance_right - distance_left)*WHEEL_BASE_RECIP);
+  float d_yaw = asin((distance_left - distance_right)*WHEEL_BASE_RECIP);
 
   // Average angle during the motion
   float average_angle = d_yaw*0.5 + telem_msg.odom_pos_yaw;
