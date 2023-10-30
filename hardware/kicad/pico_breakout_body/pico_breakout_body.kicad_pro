@@ -244,12 +244,10 @@
   },
   "libraries": {
     "pinned_footprint_libs": [],
-    "pinned_symbol_libs": [
-      "Snoopy"
-    ]
+    "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Snoopy.kicad_pro",
+    "filename": "pico_breakout_body.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -328,6 +326,18 @@
     [
       "e24ae185-8f18-408c-aee8-f727519bade3",
       ""
+    ],
+    [
+      "7e420b7e-d453-4f6d-bc7a-f40b5486bce0",
+      "Cliff Sensors"
+    ],
+    [
+      "29d32a1d-d6d2-4039-a406-284cbc3c1fe7",
+      "LDS"
+    ],
+    [
+      "9fae692a-ad7b-4215-9e30-d6b315aa0b63",
+      "Servos"
     ]
   ],
   "text_variables": {}
