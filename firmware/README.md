@@ -96,7 +96,7 @@ You can wipe out stored settings, including WiFi SSID and password, as follows:
 - Make sure you are connecting ESP32 to a 2.4GHz network. ESP32 does not support 5GHz networks.
 
 ## Modding the robot and its firmware
-- Start with an existing Kaia.ai robot, e.g. [Snoopy](https://github.com/kaiaai/kaia_descriptions/)
-- If needed, mod the robot's 3D-printable robot body. You can use [Snoopy's design](https://github.com/kaiaai/3D_printables/) as a starting point
-- If needed, mod the robot's description (i.e. sofware configuration and model), see [Snoopy](https://github.com/kaiaai/kaia_descriptions/)
+- Start with an existing Kaia.ai robot, e.g. [Snoopy](https://github.com/makerspet/makerspet_snoopy/)
+- If needed, mod the robot's 3D-printable robot body. You can use [Snoopy's design](https://github.com/makerspet/makerspet_snoopy/tree/main/hardware) as a starting point
+- If needed, mod the robot's description (i.e. sofware configuration and model), see [Snoopy's URDF](https://github.com/makerspet/makerspet_snoopy/tree/main/urdf)
 - If needed, mod the robot's firmware - use this repo as a starting point
