@@ -39,7 +39,7 @@ Kaia.ai ROS2 software stack (in Docker).
   - Upon successful connection your local PC should print out some diagnostic information.
 - If your ESP32 module fails to connect to your PC, your ESP32 module will report the error by blinking a number of times:
   - One long blink followed by a number of short blinks. Count the number of short blinks to determine the error code.
-  - Once you have the error code, open `kaia-esp32.h` and look up the `ERR_*` label that matches the error code.
+  - Once you have the error code, open `snoopy-esp32.h` and look up the `ERR_*` label that matches the error code.
     That will tell you the reason for the failure.
   - Alternatively, connect your ESP32 module to your Arduino IDE using a USB cable, select the Arduino IDE COM port
     by clicking Tools -> Port, click Tools -> Serial Monitor to open the Arduino IDE console and 
@@ -65,11 +65,14 @@ Kaia.ai ROS2 software stack (in Docker).
   the hotspot off and then back on.
 
 ## Installation
-- Download the Kaia.ai firmware project code from this [repo](https://github.com/kaiaai/arduino_fw)
-- Install the Micro-ROS Kaia.ai library using Arduino Library Manager. Learn more [here](https://github.com/kaiaai/micro_ros_arduino_kaia)
+- Download the Kaia.ai firmware project code from this [repo](https://github.com/makerspet/makerspet_snoopy/tree/main/firmware)
+- using Arduino Library Manager install
+  - [micro_ros_kaia library](https://github.com/kaiaai/micro_ros_arduino_kaiaai)
+  - [PID_Timed library](https://github.com/kaiaai/arduino_pid_timed)
+  - ESPAsyncWebSrv library along with with its dependencies
 - open the downloaded `snoopy_esp32.ino` project file in your Arduino IDE
 - In your Arduino IDE, configure Tools -> Board as "ESP32 Dev Module" and leave the board settings at their defaults
-- Install th ESP32 Sketch Data Upload tool, instructions [here](https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/)
+- Install the ESP32 Sketch Data Upload tool, instructions [here](https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/)
 - Cick the Arduino IDE build button.
   - The project should build successfully.
 - Configure the Arduino IDE COM port for firmware upload by clicking Tools -> Port and selecting the port associated
