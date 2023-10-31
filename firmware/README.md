@@ -67,7 +67,7 @@ Kaia.ai ROS2 software stack (in Docker).
 ## Installation
 - Download the Kaia.ai firmware project code from this [repo](https://github.com/kaiaai/arduino_fw)
 - Install the Micro-ROS Kaia.ai library using Arduino Library Manager. Learn more [here](https://github.com/kaiaai/micro_ros_arduino_kaia)
-- open the downloaded `kaia_esp32.ino` project file in your Arduino IDE
+- open the downloaded `snoopy_esp32.ino` project file in your Arduino IDE
 - In your Arduino IDE, configure Tools -> Board as "ESP32 Dev Module" and leave the board settings at their defaults
 - Install th ESP32 Sketch Data Upload tool, instructions [here](https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/)
 - Cick the Arduino IDE build button.
