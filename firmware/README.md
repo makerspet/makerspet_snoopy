@@ -1,4 +1,4 @@
-# [Kaia.ai ](https://kaia.ai) Arduino firmware
+# Kaia.ai Arduino firmware
 
 [Kaia.ai](https://kaiaai) is a platform for 3D-printable pet robots. Please sign up for an early launch invite [here](https://remake.ai).
 
@@ -8,8 +8,8 @@ This firmware uses a Micro-ROS [library](https://github.com/kaiaai/micro_ros_ard
 ## Bringup
 
 - Launch Kaia.ai software stack on your PC, see instructions for
-[developers](https://github.com/kaiaai/docker/tree/main/kaia-ros-dev) (with ROS2 dev tools and GUI) and
-[end users](https://github.com/kaiaai/docker/tree/main/kaia-ros) (no dev tools, GUI).
+[developers](https://github.com/kaiaai/docker/tree/main/kaiaai-ros-dev) (with ROS2 dev tools and GUI) and
+[end users](https://github.com/kaiaai/docker/tree/main/kaiaai-ros) (no dev tools, GUI).
 
 - Power up your ESP32 Dev Module.
 - When powered up for the first time after firmware upload:
