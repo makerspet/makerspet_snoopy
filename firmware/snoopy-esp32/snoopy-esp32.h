@@ -3,7 +3,7 @@
 
 // Motors config
 #define WHEEL_DIA (2*33.5e-3) // meters
-#define WHEEL_BASE ((291.794-29)*1e-3) // wheel base, meters
+#define WHEEL_BASE (262.794*1e-3) // wheel base, meters
 #define MAX_WHEEL_ACCEL 2.0   // wheel vs floor m2/sec
 
 // ESP32 pin assignment
@@ -19,7 +19,7 @@
 #define UROS_TELEM_TOPIC_NAME "telemetry"
 #define UROS_LOG_TOPIC_NAME "rosout"
 #define UROS_CMD_VEL_TOPIC_NAME "cmd_vel"
-#define UROS_NODE_NAME "snoopy_esp32_arduino_microros"
+#define UROS_NODE_NAME "snoopy_esp32"
 #define UROS_PING_PUB_PERIOD_MS 10000
 #define UROS_TELEM_PUB_PERIOD_MS 50
 #define UROS_TIME_SYNC_TIMEOUT_MS 1000
