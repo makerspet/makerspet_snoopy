@@ -22,7 +22,7 @@ Snoopy was designed in Fusion 360 in 05/2023 and printed using a Voron 2.4r2 350
  <img src="http://img.youtube.com/vi/WPB2B1DPf_s/maxresdefault.jpg" alt="Watch the assembly instructions video" width="720" height="405" border="10" />
 </a>
 
-## One-Time PC, firmware setup instructions video
+## PC, firmware setup instructions video
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=XOc5kCE3MC0" target="_blank">
  <img src="http://img.youtube.com/vi/XOc5kCE3MC0/maxresdefault.jpg" alt="Watch the one-time PC setup, firmware upload instructions video" width="720" height="405" border="10" />
 </a>
