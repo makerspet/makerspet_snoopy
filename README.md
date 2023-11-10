@@ -18,9 +18,13 @@ Snoopy was designed in Fusion 360 in 05/2023 and printed using a Voron 2.4r2 350
 - optional: 2 bumpers, 4 bumper sensors, 5 cliff sensors.
 
 ## Assembly instructions (Loki, Fido models)
-
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=WPB2B1DPf_s" target="_blank">
  <img src="http://img.youtube.com/vi/WPB2B1DPf_s/maxresdefault.jpg" alt="Watch the assembly instructions video" width="720" height="405" border="10" />
+</a>
+
+## One-Time PC setup, firmware upload instructions
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=XOc5kCE3MC0" target="_blank">
+ <img src="http://img.youtube.com/vi/XOc5kCE3MC0/maxresdefault.jpg" alt="Watch the one-time PC setup, firmware upload instructions video" width="720" height="405" border="10" />
 </a>
 
 ## DIY Hardware build
