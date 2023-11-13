@@ -27,6 +27,11 @@ Snoopy was designed in Fusion 360 in 05/2023 and printed using a Voron 2.4r2 350
  <img src="http://img.youtube.com/vi/XOc5kCE3MC0/maxresdefault.jpg" alt="Watch the one-time PC setup, firmware upload instructions video" width="720" height="405" border="10" />
 </a>
 
+## Bring-up instructions video
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=L_XbkA4pwRc" target="_blank">
+ <img src="http://img.youtube.com/vi/L_XbkA4pwRc/maxresdefault.jpg" alt="Watch the bring-up instructions video" width="720" height="405" border="10" />
+</a>
+
 ## DIY Hardware build
 - 3D printing:
   - get a 3D printer with a 300x300mm or larger build volume.
