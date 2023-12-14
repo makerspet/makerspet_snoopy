@@ -1,5 +1,7 @@
 (footprint "SWITCH" (version 20221018) (generator pcbnew)
   (layer "F.Cu")
+  (descr "SS12D10 3-pin toggle switch 1P2T, vertical")
+  (tags "switch")
   (attr through_hole)
   (fp_text reference "REF**" (at 0 4.3) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
@@ -30,4 +32,9 @@
   (pad "1" thru_hole rect (at -4.8 0) (size 3 3) (drill oval 1 1.5) (layers "*.Cu" "*.Mask") (tstamp 8b55a3e0-d8cf-4929-a488-80f0e0937caf))
   (pad "2" thru_hole circle (at 0 0) (size 3 3) (drill oval 1 1.5) (layers "*.Cu" "*.Mask") (tstamp 3feadf75-1848-44cf-bbd9-11a32fa481f1))
   (pad "3" thru_hole circle (at 4.8 0) (size 3 3) (drill oval 1 1.5) (layers "*.Cu" "*.Mask") (tstamp f2c87493-c5bb-45a6-aba8-39d89540fa06))
+  (model "C:/Users/ilya/git/snoopy/kicad/step/SS-12D10L4.STEP"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

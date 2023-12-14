@@ -403,9 +403,12 @@
     }
   },
   "libraries": {
-    "pinned_footprint_libs": [],
+    "pinned_footprint_libs": [
+      "Makerspet"
+    ],
     "pinned_symbol_libs": [
-      "Snoopy"
+      "Snoopy",
+      "Makerspet"
     ]
   },
   "meta": {
@@ -445,8 +448,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
-      "vrml": ""
+      "step": "../../../../OneDrive/Desktop/esp32_breakout.step",
+      "vrml": "../../../../OneDrive/Desktop/esp32_breakout.wrl"
     },
     "page_layout_descr_file": ""
   },
