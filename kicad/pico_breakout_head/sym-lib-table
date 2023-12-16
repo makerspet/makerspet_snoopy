@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Makerspet")(type "KiCad")(uri "C:/Users/ilya/git/snoopy/kicad/esp32_breakout/Makerspet.kicad_sym")(options "")(descr ""))
+)
