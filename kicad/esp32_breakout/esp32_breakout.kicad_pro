@@ -444,8 +444,8 @@
   },
   "pcbnew": {
     "last_paths": {
-      "gencad": "",
-      "idf": "",
+      "gencad": "esp32_breakout.cad",
+      "idf": "esp32_breakout.emn",
       "netlist": "",
       "specctra_dsn": "",
       "step": "../../../../OneDrive/Desktop/esp32_breakout.step",
