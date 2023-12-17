@@ -33,6 +33,7 @@
 - fixed battery voltage sensing ADC resistor divider values
 - removed battery charging connector
   - the charging connection depends on the battery BMS, therefore the charger/dock should connect to the battery instead of the board
+- added silkscreens: makerspet.com, board name and version
 
 ## v0.1 PCB prototype
 - Deans T-Plug type battery connector
