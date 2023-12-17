@@ -1,7 +1,6 @@
 # Change log
 
 ## v1.0
-- added power-on switch
 - changed voltage regulator to LM2596 DC-DC module
   - unlike other low-cost DC-DC modules, LM2596 has built-in output current limit, short and thermal protection
   - LM2596 can accept up to 40V input as a measure for input overvoltage protection
@@ -31,7 +30,21 @@
     HC-04 performance varies depending on its manufacturer and some HC-04 modules are plain unusable.
     US-100 communicates with ESP32 using 9600 baud serial (less work for the ESP32 compared to HC-04)
     and offers a considerably better and consistent measurement quality. US-100 costs somewhat more compared to HC-04.
+- fixed battery voltage sensing ADC resistor divider values
+- removed battery charging connector
+  - the charging connection depends on the battery BMS, therefore the charger/dock should connect to the battery instead of the board
+
+## v0.1 PCB prototype
+- Deans T-Plug type battery connector
+- barrel-type battery charger connector
+- US-100 ultrasonic distance sensor header
+- laser pointer header
+- miscellaneous unused GPIO header
+- battery voltage sensing using ESP32 ADC
+- PCB mounting holes
+- 3 I2C extension connectors
+- power-on switch
+- LDS connector supporting a large variety of laser distance scanners, including those that don't control motor on/off
 - fixed motors "kicking" during power-up
   - reassigned some motor control signals to ESP32 GPIO that do not toggle during ESP32 power-up boot
-- added PCB mounting holes
-- fixed battery voltage sensing ADC resistor divider values
+- mini560 Pro 5V DC-DC voltage regulator module
