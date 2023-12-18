@@ -1,3 +1,18 @@
+# Arduino ESP32 Breakout PCB for Maker's Pet robots
+
+## Files
+- [schematic PDF](output/esp32_breakout_schematic_v1_0.pdf)
+- [BoM .CSV](output/esp32_breakout_bom_v1_0.csv), [BoM .XML](output/esp32_breakout_bom_v1_0.xml)
+- [Gerber .ZIP](output/esp32_breakout_v1_0_gerber.zip)
+- [3D model .STEP](output/esp32_breakout_v1_0.step)
+- KiCAD schematic, layout - in this folder
+
+## Top
+![PCB 3D view from top](output/esp32_v1_0_breakout_top.jpg)
+
+## Bottom
+![PCB 3D view from top](output/esp32_v1_0_breakout_bottom.jpg)
+
 # Change log
 
 ## v1.0
