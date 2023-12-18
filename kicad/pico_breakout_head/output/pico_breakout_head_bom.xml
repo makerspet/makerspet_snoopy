@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\pico_breakout_head\pico_breakout_head.kicad_sch</source>
-    <date>12/16/2023 12:22:06 AM</date>
+    <date>12/17/2023 5:19:24 PM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -99,7 +99,7 @@
     </comp>
     <comp ref="J1">
       <value>HDR F 2.54MM 20-pin VERT</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x20_P2.54mm_Vertical</footprint>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical</footprint>
       <libsource lib="Connector_Generic" part="Conn_01x20" description="Generic connector, single row, 01x20, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
@@ -110,7 +110,7 @@
     </comp>
     <comp ref="J2">
       <value>HDR F 2.54MM 20-pin VERT</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x20_P2.54mm_Vertical</footprint>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical</footprint>
       <libsource lib="Connector_Generic" part="Conn_01x20" description="Generic connector, single row, 01x20, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
@@ -132,7 +132,7 @@
     </comp>
     <comp ref="J4">
       <value>HDR M 2.54MM 4p VERT</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical</footprint>
       <libsource lib="Connector_Generic" part="Conn_01x04" description="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
@@ -154,7 +154,7 @@
     </comp>
     <comp ref="J6">
       <value>HDR M 2.54MM 9p VERT</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical</footprint>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical</footprint>
       <libsource lib="Connector_Generic" part="Conn_01x09" description="Generic connector, single row, 01x09, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
