@@ -18,7 +18,7 @@
 ## v1.1.0
 - re-added support for LDS that need external motor PWM control
   - primarily for LDS02RR
-  - fixed N-FET bug
+  - fixed N-MOSFET bug
 
 ## v1.0.0
 - changed voltage regulator to LM2596 DC-DC module
