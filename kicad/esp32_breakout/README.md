@@ -1,21 +1,26 @@
 # Arduino ESP32 Breakout PCB for Maker's Pet robots
 
 ## Files
-- [schematic PDF](output/esp32_breakout_schematic_v1_0.pdf)
-- [BoM .CSV](output/esp32_breakout_bom_v1_0.csv), [BoM .XML](output/esp32_breakout_bom_v1_0.xml)
-- [Gerber .ZIP](output/esp32_breakout_v1_0_gerber.zip)
-- [3D model .STEP](output/esp32_breakout_v1_0.step)
+- [schematic PDF](output/esp32_breakout_schematic.pdf)
+- [BoM .CSV](output/esp32_breakout_bom.csv), [BoM .XML](output/esp32_breakout_bom.xml)
+- [Gerber .ZIP](output/esp32_breakout_gerber.zip)
+- [3D model .STEP](output/esp32_breakout.step)
 - KiCAD schematic, layout - in this folder
 
 ## Top
-![PCB 3D view from top](output/esp32_v1_0_breakout_top.jpg)
+![PCB 3D view from top](output/esp32_breakout_top.jpg)
 
 ## Bottom
-![PCB 3D view from top](output/esp32_v1_0_breakout_bottom.jpg)
+![PCB 3D view from top](output/esp32_breakout_bottom.jpg)
 
 # Change log
 
-## v1.0
+## v1.1.0
+- re-added support for LDS that need external motor PWM control
+  - primarily for LDS02RR
+  - fixed N-FET bug
+
+## v1.0.0
 - changed voltage regulator to LM2596 DC-DC module
   - unlike other low-cost DC-DC modules, LM2596 has built-in output current limit, short and thermal protection
   - LM2596 can accept up to 40V input as a measure for input overvoltage protection
