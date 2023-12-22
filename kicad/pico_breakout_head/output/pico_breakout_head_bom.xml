@@ -2,14 +2,14 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\pico_breakout_head\pico_breakout_head.kicad_sch</source>
-    <date>12/17/2023 5:19:24 PM</date>
+    <date>12/21/2023 9:47:46 PM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Raspberry Pi Pico Breakout - Head</title>
         <company>Maker's Pet</company>
-        <rev/>
-        <date/>
+        <rev>0.1.1</rev>
+        <date>2023-12-21</date>
         <source>pico_breakout_head.kicad_sch</source>
         <comment number="1" value="makerspet.com"/>
         <comment number="2" value=""/>
@@ -25,21 +25,16 @@
   </design>
   <components>
     <comp ref="D1">
-      <value>CGRA4004-G</value>
-      <footprint>Diode_SMD:D_SMA</footprint>
-      <fields>
-        <field name="Sim.Device">D</field>
-        <field name="Sim.Pins">1=K 2=A</field>
-      </fields>
-      <libsource lib="Device" part="D" description="Diode"/>
-      <property name="Sim.Device" value="D"/>
-      <property name="Sim.Pins" value="1=K 2=A"/>
+      <value>FS26</value>
+      <footprint>Diode_SMD:D_SOD-123F</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/good-ark-semiconductor/FS26/18667798</datasheet>
+      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
-      <property name="ki_description" value="Diode"/>
-      <property name="ki_keywords" value="diode"/>
+      <property name="ki_description" value="Schottky diode"/>
+      <property name="ki_keywords" value="diode Schottky"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>aed85c32-bf99-40d9-97c5-aca87a6990b3</tstamps>
+      <tstamps>dc504b4f-2de1-4051-8df0-983bf596ae8e</tstamps>
     </comp>
     <comp ref="D2">
       <value>FS26</value>
@@ -219,17 +214,6 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>4a554fb5-89c0-452e-9d69-fde834ca741c</tstamps>
     </comp>
-    <comp ref="R5">
-      <value>1k</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
-      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
-      <property name="ki_description" value="Resistor, small US symbol"/>
-      <property name="ki_keywords" value="r resistor"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>6bb68439-45e4-40ee-a987-888e5053dca1</tstamps>
-    </comp>
     <comp ref="U1">
       <value>Pico</value>
       <footprint>Makerspet:RPi_Pico_SMD_TH</footprint>
@@ -350,27 +334,6 @@
         <pin num="18" name="Pin_18" type="passive"/>
         <pin num="19" name="Pin_19" type="passive"/>
         <pin num="20" name="Pin_20" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Device" part="D">
-      <description>Diode</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>TO-???*</fp>
-        <fp>*_Diode_*</fp>
-        <fp>*SingleDiode*</fp>
-        <fp>D_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">D</field>
-        <field name="Value">D</field>
-        <field name="Datasheet">~</field>
-        <field name="Sim.Device">D</field>
-        <field name="Sim.Pins">1=K 2=A</field>
-      </fields>
-      <pins>
-        <pin num="1" name="K" type="passive"/>
-        <pin num="2" name="A" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="Device" part="D_Schottky">
@@ -528,7 +491,7 @@
     </net>
     <net code="3" name="/FAN_EN">
       <node ref="J1" pin="14" pinfunction="Pin_14" pintype="passive"/>
-      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
       <node ref="U1" pin="14" pinfunction="GPIO10" pintype="bidirectional"/>
     </net>
     <net code="4" name="/I2C_SCL_HOST">
@@ -694,20 +657,16 @@
       <node ref="J2" pin="20" pinfunction="Pin_20" pintype="passive"/>
       <node ref="U1" pin="21" pinfunction="GPIO16" pintype="bidirectional"/>
     </net>
-    <net code="36" name="Net-(Q1-G)">
-      <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
-      <node ref="R5" pin="1" pintype="passive"/>
-    </net>
-    <net code="37" name="unconnected-(J3-Pin_2-Pad2)">
+    <net code="36" name="unconnected-(J3-Pin_2-Pad2)">
       <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive+no_connect"/>
     </net>
-    <net code="38" name="unconnected-(U1-GND-Pad42)">
+    <net code="37" name="unconnected-(U1-GND-Pad42)">
       <node ref="U1" pin="42" pinfunction="GND" pintype="power_in+no_connect"/>
     </net>
-    <net code="39" name="unconnected-(U1-SWCLK-Pad41)">
+    <net code="38" name="unconnected-(U1-SWCLK-Pad41)">
       <node ref="U1" pin="41" pinfunction="SWCLK" pintype="input+no_connect"/>
     </net>
-    <net code="40" name="unconnected-(U1-SWDIO-Pad43)">
+    <net code="39" name="unconnected-(U1-SWDIO-Pad43)">
       <node ref="U1" pin="43" pinfunction="SWDIO" pintype="bidirectional+no_connect"/>
     </net>
   </nets>

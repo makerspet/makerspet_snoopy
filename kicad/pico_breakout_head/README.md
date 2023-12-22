@@ -15,6 +15,10 @@
 
 # Change log
 
+## v0.1.1 PCB prototype
+- use same diode components
+- removed fan MOSFET gate resistor
+
 ## v0.1 PCB prototype
 - I2C host interface connector
 - fan connector
