@@ -1,4 +1,4 @@
-22473764798926354
+22456740498351624
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -62496,82 +62496,12 @@ Yellow 5381 Series LED
 2
 2
 Makerspet
-AMASS_XT30U-F_1x02_P5.0mm_Vertical
-Connector XT30 Vertical Cable Female, https://www.tme.eu/en/Document/3cbfa5cfa544d79584972dd5234a409e/XT30U%20SPEC.pdf
-RC Connector XT30
-0
-2
-2
-Makerspet
-Crystal_SMD_HC49-US
-SMD Crystal HC-49-SD http://cdn-reichelt.de/documents/datenblatt/B400/xxx-HC49-SMD.pdf, 11.4x4.7mm^2 package
-SMD SMT crystal
-0
-2
-2
-Makerspet
-DEANS-T-PLUG
+LDS02RR_FPC12
 
 
 0
-2
-2
-Makerspet
-DIO_SS14LW
-
-
-0
-2
-2
-Makerspet
-ESP-32
-
-
-0
-30
-30
-Makerspet
-Fuse_1808
-Fuse SMD 1808
-fuse
-0
-2
-2
-Makerspet
-LM2596 Module
-
-
-0
-4
-4
-Makerspet
-Mini560-Pro
-
-
-0
-4
-4
-Makerspet
-RP2040-QFN-56
-QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
-QFN DFN_QFN
-0
-70
-57
-Makerspet
-RPi_Pico_SMD_TH
-Through hole straight pin header, 2x20, 2.54mm pitch, double rows
-Through hole pin header THT 2x20 2.54mm double row
-0
-86
-43
-Makerspet
-SWITCH
-SS12D10 3-pin toggle switch 1P2T, vertical
-switch
-0
-3
-3
+12
+12
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
