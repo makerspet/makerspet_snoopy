@@ -6,8 +6,8 @@
 
   (title_block
     (title "Maker's Pet ESP32 Breakout")
-    (date "2023-12-15")
-    (rev "1.0.0")
+    (date "2023-12-24")
+    (rev "1.0.1")
     (company "Maker's Pet")
     (comment 1 "makerspet.com")
   )
@@ -2358,7 +2358,7 @@
     (property "Value" "HDR F 2.54MM VERT" (at 202.692 44.45 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical" (at 199.136 35.052 0)
+    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical" (at 199.136 35.052 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 199.136 35.052 0)

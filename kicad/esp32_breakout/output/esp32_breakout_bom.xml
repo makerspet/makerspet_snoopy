@@ -2,14 +2,14 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\esp32_breakout\esp32_breakout.kicad_sch</source>
-    <date>12/15/2023 7:02:18 PM</date>
+    <date>12/24/2023 12:08:56 AM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Maker's Pet ESP32 Breakout</title>
         <company>Maker's Pet</company>
-        <rev>1.0.0</rev>
-        <date>2023-12-15</date>
+        <rev>1.0.1</rev>
+        <date>2023-12-24</date>
         <source>esp32_breakout.kicad_sch</source>
         <comment number="1" value="makerspet.com"/>
         <comment number="2" value=""/>
@@ -148,7 +148,7 @@
     </comp>
     <comp ref="J5">
       <value>HDR F 2.54MM VERT</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical</footprint>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical</footprint>
       <libsource lib="Connector_Generic" part="Conn_01x08" description="Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="esp32_breakout.kicad_sch"/>
@@ -159,7 +159,7 @@
     </comp>
     <comp ref="J6">
       <value>HDR F 2.54MM 5-pin VERT</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical</footprint>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical</footprint>
       <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="esp32_breakout.kicad_sch"/>
