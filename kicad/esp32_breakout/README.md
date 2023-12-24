@@ -15,6 +15,9 @@
 
 # Change log
 
+## v1.0.1
+- fixed GPIO header footprint
+
 ## v1.0.0
 - changed voltage regulator to LM2596 DC-DC module
   - unlike other low-cost DC-DC modules, LM2596 has built-in output current limit, short and thermal protection
