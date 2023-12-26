@@ -29,7 +29,7 @@
     (stroke (width 0.05) (type default)) (layer "F.CrtYd") (tstamp c295e1c5-6b92-47ed-a681-c267717b475d))
   (fp_line (start 6.55 1.75) (end -6.55 1.75)
     (stroke (width 0.05) (type default)) (layer "F.CrtYd") (tstamp bd48a5fe-298d-449e-a818-89dbe3b2b83a))
-  (pad "1" thru_hole rect (at -4.8 0) (size 3 3) (drill oval 1 1.5) (layers "*.Cu" "*.Mask") (tstamp 8b55a3e0-d8cf-4929-a488-80f0e0937caf))
+  (pad "1" thru_hole rect (at -4.8 0) (size 3 3) (drill oval 1.2 1.7) (layers "*.Cu" "*.Mask") (tstamp 8b55a3e0-d8cf-4929-a488-80f0e0937caf))
   (pad "2" thru_hole circle (at 0 0) (size 3 3) (drill oval 1 1.5) (layers "*.Cu" "*.Mask") (tstamp 3feadf75-1848-44cf-bbd9-11a32fa481f1))
   (pad "3" thru_hole circle (at 4.8 0) (size 3 3) (drill oval 1 1.5) (layers "*.Cu" "*.Mask") (tstamp f2c87493-c5bb-45a6-aba8-39d89540fa06))
   (model "C:/Users/ilya/git/snoopy/kicad/step/SS-12D10L4.STEP"

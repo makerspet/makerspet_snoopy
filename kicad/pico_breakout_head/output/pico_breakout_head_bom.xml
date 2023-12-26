@@ -2,14 +2,14 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\pico_breakout_head\pico_breakout_head.kicad_sch</source>
-    <date>12/21/2023 9:47:46 PM</date>
+    <date>12/26/2023 1:05:24 AM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Raspberry Pi Pico Breakout - Head</title>
         <company>Maker's Pet</company>
-        <rev>0.1.1</rev>
-        <date>2023-12-21</date>
+        <rev>0.2.0</rev>
+        <date>2023-12-26</date>
         <source>pico_breakout_head.kicad_sch</source>
         <comment number="1" value="makerspet.com"/>
         <comment number="2" value=""/>
@@ -24,18 +24,6 @@
     </sheet>
   </design>
   <components>
-    <comp ref="D1">
-      <value>FS26</value>
-      <footprint>Diode_SMD:D_SOD-123F</footprint>
-      <datasheet>https://www.digikey.com/en/products/detail/good-ark-semiconductor/FS26/18667798</datasheet>
-      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
-      <property name="ki_description" value="Schottky diode"/>
-      <property name="ki_keywords" value="diode Schottky"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>dc504b4f-2de1-4051-8df0-983bf596ae8e</tstamps>
-    </comp>
     <comp ref="D2">
       <value>FS26</value>
       <footprint>Diode_SMD:D_SOD-123F</footprint>
@@ -159,16 +147,16 @@
       <tstamps>d144623b-0910-45d0-a66c-ed1cd51ea26e</tstamps>
     </comp>
     <comp ref="Q1">
-      <value>BSS123</value>
+      <value>AS2302</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
-      <datasheet>http://www.diodes.com/assets/Datasheets/ds30366.pdf</datasheet>
-      <libsource lib="Transistor_FET" part="BSS123" description="0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"/>
+      <datasheet>https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2615/AS2302.pdf</datasheet>
+      <libsource lib="Makerspet" part="AS2302" description="3A Id, 20V Vds, N-Channel MOSFET, SOT-23"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="pico_breakout_head.kicad_sch"/>
-      <property name="ki_description" value="0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"/>
+      <property name="ki_description" value="3A Id, 20V Vds, N-Channel MOSFET, SOT-23"/>
       <property name="ki_keywords" value="N-Channel MOSFET"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>e780ccad-f654-420e-9f95-d79c49f342d6</tstamps>
+      <tstamps>e5b05b47-3af3-4d03-837f-084e3e4abc26</tstamps>
     </comp>
     <comp ref="R1">
       <value>1M</value>
@@ -371,6 +359,24 @@
         <pin num="2" name="" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="Makerspet" part="AS2302">
+      <description>3A Id, 20V Vds, N-Channel MOSFET, SOT-23</description>
+      <docs>https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2615/AS2302.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">AS2302</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/2615/AS2302.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="D" type="passive"/>
+        <pin num="3" name="S" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="Makerspet" part="Pico">
       <fields>
         <field name="Reference">U</field>
@@ -435,24 +441,6 @@
         <field name="Datasheet">~</field>
       </fields>
     </libpart>
-    <libpart lib="Transistor_FET" part="BSS123">
-      <description>0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23</description>
-      <docs>http://www.diodes.com/assets/Datasheets/ds30366.pdf</docs>
-      <footprints>
-        <fp>SOT?23*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">Q</field>
-        <field name="Value">BSS123</field>
-        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
-        <field name="Datasheet">http://www.diodes.com/assets/Datasheets/ds30366.pdf</field>
-      </fields>
-      <pins>
-        <pin num="1" name="G" type="input"/>
-        <pin num="2" name="S" type="passive"/>
-        <pin num="3" name="D" type="passive"/>
-      </pins>
-    </libpart>
   </libparts>
   <libraries>
     <library logical="Connector_Generic">
@@ -467,9 +455,6 @@
     <library logical="Mechanical">
       <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
     </library>
-    <library logical="Transistor_FET">
-      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
-    </library>
   </libraries>
   <nets>
     <net code="1" name="+3.3V">
@@ -477,7 +462,6 @@
       <node ref="U1" pin="36" pinfunction="3V3" pintype="power_in"/>
     </net>
     <net code="2" name="+5V">
-      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
@@ -561,7 +545,7 @@
       <node ref="J6" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="J6" pin="4" pinfunction="Pin_4" pintype="passive"/>
       <node ref="J6" pin="7" pinfunction="Pin_7" pintype="passive"/>
-      <node ref="Q1" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="D" pintype="passive"/>
       <node ref="U1" pin="13" pinfunction="GND" pintype="power_in"/>
       <node ref="U1" pin="18" pinfunction="GND" pintype="power_in"/>
       <node ref="U1" pin="23" pinfunction="GND" pintype="power_in"/>
@@ -571,91 +555,90 @@
       <node ref="U1" pin="38" pinfunction="GND" pintype="bidirectional"/>
       <node ref="U1" pin="8" pinfunction="GND" pintype="power_in"/>
     </net>
-    <net code="15" name="Net-(D1-A)">
-      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
-      <node ref="Q1" pin="2" pinfunction="S" pintype="passive"/>
-    </net>
-    <net code="16" name="Net-(D2-K)">
+    <net code="15" name="Net-(D2-K)">
       <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="U1" pin="39" pinfunction="VSYS" pintype="power_in"/>
     </net>
-    <net code="17" name="Net-(J1-Pin_5)">
+    <net code="16" name="Net-(J1-Pin_5)">
       <node ref="J1" pin="5" pinfunction="Pin_5" pintype="passive"/>
       <node ref="U1" pin="5" pinfunction="GPIO3" pintype="bidirectional"/>
     </net>
-    <net code="18" name="Net-(J1-Pin_6)">
+    <net code="17" name="Net-(J1-Pin_6)">
       <node ref="J1" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="U1" pin="6" pinfunction="GPIO4" pintype="bidirectional"/>
     </net>
-    <net code="19" name="Net-(J1-Pin_7)">
+    <net code="18" name="Net-(J1-Pin_7)">
       <node ref="J1" pin="7" pinfunction="Pin_7" pintype="passive"/>
       <node ref="U1" pin="7" pinfunction="GPIO5" pintype="bidirectional"/>
     </net>
-    <net code="20" name="Net-(J1-Pin_15)">
+    <net code="19" name="Net-(J1-Pin_15)">
       <node ref="J1" pin="15" pinfunction="Pin_15" pintype="passive"/>
       <node ref="U1" pin="15" pinfunction="GPIO11" pintype="bidirectional"/>
     </net>
-    <net code="21" name="Net-(J1-Pin_16)">
+    <net code="20" name="Net-(J1-Pin_16)">
       <node ref="J1" pin="16" pinfunction="Pin_16" pintype="passive"/>
       <node ref="U1" pin="16" pinfunction="GPIO12" pintype="bidirectional"/>
     </net>
-    <net code="22" name="Net-(J2-Pin_1)">
+    <net code="21" name="Net-(J2-Pin_1)">
       <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U1" pin="40" pinfunction="VBUS" pintype="power_in"/>
     </net>
-    <net code="23" name="Net-(J2-Pin_4)">
+    <net code="22" name="Net-(J2-Pin_4)">
       <node ref="J2" pin="4" pinfunction="Pin_4" pintype="passive"/>
       <node ref="U1" pin="37" pinfunction="3V3_EN" pintype="input"/>
     </net>
-    <net code="24" name="Net-(J2-Pin_6)">
+    <net code="23" name="Net-(J2-Pin_6)">
       <node ref="J2" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="U1" pin="35" pinfunction="ADC_VREF" pintype="power_in"/>
     </net>
-    <net code="25" name="Net-(J2-Pin_7)">
+    <net code="24" name="Net-(J2-Pin_7)">
       <node ref="J2" pin="7" pinfunction="Pin_7" pintype="passive"/>
       <node ref="U1" pin="34" pinfunction="GPIO28_ADC2" pintype="bidirectional"/>
     </net>
-    <net code="26" name="Net-(J2-Pin_9)">
+    <net code="25" name="Net-(J2-Pin_9)">
       <node ref="J2" pin="9" pinfunction="Pin_9" pintype="passive"/>
       <node ref="U1" pin="32" pinfunction="GPIO27_ADC1" pintype="bidirectional"/>
     </net>
-    <net code="27" name="Net-(J2-Pin_10)">
+    <net code="26" name="Net-(J2-Pin_10)">
       <node ref="J2" pin="10" pinfunction="Pin_10" pintype="passive"/>
       <node ref="U1" pin="31" pinfunction="GPIO26_ADC0" pintype="bidirectional"/>
     </net>
-    <net code="28" name="Net-(J2-Pin_11)">
+    <net code="27" name="Net-(J2-Pin_11)">
       <node ref="J2" pin="11" pinfunction="Pin_11" pintype="passive"/>
       <node ref="U1" pin="30" pinfunction="RUN" pintype="input"/>
     </net>
-    <net code="29" name="Net-(J2-Pin_12)">
+    <net code="28" name="Net-(J2-Pin_12)">
       <node ref="J2" pin="12" pinfunction="Pin_12" pintype="passive"/>
       <node ref="U1" pin="29" pinfunction="GPIO22" pintype="bidirectional"/>
     </net>
-    <net code="30" name="Net-(J2-Pin_14)">
+    <net code="29" name="Net-(J2-Pin_14)">
       <node ref="J2" pin="14" pinfunction="Pin_14" pintype="passive"/>
       <node ref="U1" pin="27" pinfunction="GPIO21" pintype="bidirectional"/>
     </net>
-    <net code="31" name="Net-(J2-Pin_15)">
+    <net code="30" name="Net-(J2-Pin_15)">
       <node ref="J2" pin="15" pinfunction="Pin_15" pintype="passive"/>
       <node ref="U1" pin="26" pinfunction="GPIO20" pintype="bidirectional"/>
     </net>
-    <net code="32" name="Net-(J2-Pin_16)">
+    <net code="31" name="Net-(J2-Pin_16)">
       <node ref="J2" pin="16" pinfunction="Pin_16" pintype="passive"/>
       <node ref="U1" pin="25" pinfunction="GPIO19" pintype="bidirectional"/>
     </net>
-    <net code="33" name="Net-(J2-Pin_17)">
+    <net code="32" name="Net-(J2-Pin_17)">
       <node ref="J2" pin="17" pinfunction="Pin_17" pintype="passive"/>
       <node ref="U1" pin="24" pinfunction="GPIO18" pintype="bidirectional"/>
     </net>
-    <net code="34" name="Net-(J2-Pin_19)">
+    <net code="33" name="Net-(J2-Pin_19)">
       <node ref="J2" pin="19" pinfunction="Pin_19" pintype="passive"/>
       <node ref="U1" pin="22" pinfunction="GPIO17" pintype="bidirectional"/>
     </net>
-    <net code="35" name="Net-(J2-Pin_20)">
+    <net code="34" name="Net-(J2-Pin_20)">
       <node ref="J2" pin="20" pinfunction="Pin_20" pintype="passive"/>
       <node ref="U1" pin="21" pinfunction="GPIO16" pintype="bidirectional"/>
+    </net>
+    <net code="35" name="Net-(J5-Pin_2)">
+      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="S" pintype="passive"/>
     </net>
     <net code="36" name="unconnected-(J3-Pin_2-Pad2)">
       <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive+no_connect"/>
