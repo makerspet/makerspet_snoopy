@@ -15,6 +15,11 @@
 
 # Change log
 
+## v0.2.0 PCB prototype
+- fan N-MOSFET fix
+- removed fan diode
+  - unnecessary for such a small motor
+
 ## v0.1.1 PCB prototype
 - use same diode components
 - removed fan MOSFET gate resistor
