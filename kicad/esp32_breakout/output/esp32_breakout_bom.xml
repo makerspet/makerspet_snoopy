@@ -2,14 +2,14 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\esp32_breakout\esp32_breakout.kicad_sch</source>
-    <date>12/24/2023 12:08:56 AM</date>
+    <date>12/28/2023 8:25:21 PM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Maker's Pet ESP32 Breakout</title>
         <company>Maker's Pet</company>
-        <rev>1.0.1</rev>
-        <date>2023-12-24</date>
+        <rev>1.1.0</rev>
+        <date>2023-12-28</date>
         <source>esp32_breakout.kicad_sch</source>
         <comment number="1" value="makerspet.com"/>
         <comment number="2" value=""/>
@@ -49,9 +49,9 @@
       <tstamps>837b3054-1f2b-4520-a18b-59ee9cf21774</tstamps>
     </comp>
     <comp ref="F1">
-      <value>FCC20202AATP</value>
-      <footprint>Fuse:Fuse_0805_2012Metric</footprint>
-      <datasheet>http://www.kamaya.co.jp/upload/products_pdf/kamaya_products(FCC)_english_20170207_094544.pdf</datasheet>
+      <value>0685T2500-01</value>
+      <footprint>Fuse:Fuse_1206_3216Metric</footprint>
+      <datasheet>https://www.belfuse.com/resources/datasheets/circuitprotection/ds-cp-c1t-series.pdf</datasheet>
       <libsource lib="Device" part="Fuse" description="Fuse"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="esp32_breakout.kicad_sch"/>
@@ -147,26 +147,27 @@
       <tstamps>a186cf43-39f6-461b-a74f-f4c42db1b5eb</tstamps>
     </comp>
     <comp ref="J5">
-      <value>HDR F 2.54MM VERT</value>
-      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x08_P2.54mm_Vertical</footprint>
+      <value>HDR 8p M VERT 2.54mm</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical</footprint>
       <libsource lib="Connector_Generic" part="Conn_01x08" description="Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="esp32_breakout.kicad_sch"/>
       <property name="ki_description" value="Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="ki_keywords" value="connector"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>5111f7d2-a6f6-4db7-87c1-fd6b8b6d81d9</tstamps>
+      <tstamps>99ddc1cf-2b99-4cbc-8e3f-d677ebb56095</tstamps>
     </comp>
     <comp ref="J6">
-      <value>HDR F 2.54MM 5-pin VERT</value>
-      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical</footprint>
+      <value>JST B5B-ZR</value>
+      <footprint>Makerspet:JST_ZH_B5B-ZR_1x05_P1.50mm_Vertical</footprint>
+      <datasheet>https://www.jst.com/wp-content/uploads/2021/01/eZH-new.pdf</datasheet>
       <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="esp32_breakout.kicad_sch"/>
       <property name="ki_description" value="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="ki_keywords" value="connector"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>a010992f-1193-4a31-bb4d-d07ba83c794e</tstamps>
+      <tstamps>816bc1f9-1213-436e-bb40-e81dac0da9dc</tstamps>
     </comp>
     <comp ref="J9">
       <value>JST B6B-PH-K-S</value>
@@ -631,7 +632,7 @@
       <node ref="R10" pin="2" pintype="passive"/>
       <node ref="U1" pin="11" pinfunction="GPIO21/I2C_SDA" pintype="bidirectional"/>
     </net>
-    <net code="15" name="/LDS_MOT_EN">
+    <net code="15" name="/LDS_EN">
       <node ref="J3" pin="7" pinfunction="Pin_7" pintype="passive"/>
       <node ref="U1" pin="10" pinfunction="GPIO19/VSPI_MISO" pintype="bidirectional"/>
     </net>

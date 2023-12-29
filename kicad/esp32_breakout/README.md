@@ -15,6 +15,10 @@
 
 # Change log
 
+## v1.1.0
+- JST ZH connector for the ultrasonic distance sensor
+- 3D-printed board enclosure to prevent accidental 24V shorts
+
 ## v1.0.1
 - fixed GPIO header footprint
 
