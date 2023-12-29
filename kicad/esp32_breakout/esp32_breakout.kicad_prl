@@ -23,7 +23,7 @@
       "otherItems": false,
       "pads": false,
       "text": true,
-      "tracks": false,
+      "tracks": true,
       "vias": false,
       "zones": false
     },
@@ -65,7 +65,7 @@
       40
     ],
     "visible_layers": "fffffff_ffffffff",
-    "zone_display_mode": 1
+    "zone_display_mode": 0
   },
   "meta": {
     "filename": "esp32_breakout.kicad_prl",
