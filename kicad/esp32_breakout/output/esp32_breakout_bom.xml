@@ -2,14 +2,14 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\esp32_breakout\esp32_breakout.kicad_sch</source>
-    <date>12/28/2023 8:25:21 PM</date>
+    <date>12/29/2023 1:41:01 AM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title>Maker's Pet ESP32 Breakout</title>
         <company>Maker's Pet</company>
         <rev>1.1.0</rev>
-        <date>2023-12-28</date>
+        <date>2023-12-29</date>
         <source>esp32_breakout.kicad_sch</source>
         <comment number="1" value="makerspet.com"/>
         <comment number="2" value=""/>
@@ -147,27 +147,15 @@
       <tstamps>a186cf43-39f6-461b-a74f-f4c42db1b5eb</tstamps>
     </comp>
     <comp ref="J5">
-      <value>HDR 8p M VERT 2.54mm</value>
-      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical</footprint>
-      <libsource lib="Connector_Generic" part="Conn_01x08" description="Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <value>HDR M VERT 12p 2.54mm</value>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x12" description="Generic connector, single row, 01x12, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="esp32_breakout.kicad_sch"/>
-      <property name="ki_description" value="Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_description" value="Generic connector, single row, 01x12, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="ki_keywords" value="connector"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>99ddc1cf-2b99-4cbc-8e3f-d677ebb56095</tstamps>
-    </comp>
-    <comp ref="J6">
-      <value>JST B5B-ZR</value>
-      <footprint>Makerspet:JST_ZH_B5B-ZR_1x05_P1.50mm_Vertical</footprint>
-      <datasheet>https://www.jst.com/wp-content/uploads/2021/01/eZH-new.pdf</datasheet>
-      <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="esp32_breakout.kicad_sch"/>
-      <property name="ki_description" value="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
-      <property name="ki_keywords" value="connector"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>816bc1f9-1213-436e-bb40-e81dac0da9dc</tstamps>
+      <tstamps>2c53bbca-15a0-4b32-9749-5969e5c221ab</tstamps>
     </comp>
     <comp ref="J9">
       <value>JST B6B-PH-K-S</value>
@@ -235,7 +223,7 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>2a5cf707-4f33-4cc9-b214-dc808d33d1eb</tstamps>
     </comp>
-    <comp ref="R7">
+    <comp ref="R5">
       <value>10k</value>
       <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
       <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
@@ -244,7 +232,7 @@
       <property name="ki_description" value="Resistor, small US symbol"/>
       <property name="ki_keywords" value="r resistor"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>3a47cfaf-a97a-4650-a51e-43e1ba809185</tstamps>
+      <tstamps>fe46557f-9f94-4a51-9782-c939aa0ca631</tstamps>
     </comp>
     <comp ref="R8">
       <value>200k</value>
@@ -378,15 +366,15 @@
         <pin num="7" name="Pin_7" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Connector_Generic" part="Conn_01x08">
-      <description>Generic connector, single row, 01x08, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+    <libpart lib="Connector_Generic" part="Conn_01x12">
+      <description>Generic connector, single row, 01x12, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
       <docs>~</docs>
       <footprints>
         <fp>Connector*:*_1x??_*</fp>
       </footprints>
       <fields>
         <field name="Reference">J</field>
-        <field name="Value">Conn_01x08</field>
+        <field name="Value">Conn_01x12</field>
         <field name="Datasheet">~</field>
       </fields>
       <pins>
@@ -398,6 +386,10 @@
         <pin num="6" name="Pin_6" type="passive"/>
         <pin num="7" name="Pin_7" type="passive"/>
         <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+        <pin num="11" name="Pin_11" type="passive"/>
+        <pin num="12" name="Pin_12" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="Device" part="D_Schottky">
@@ -558,7 +550,7 @@
   <nets>
     <net code="1" name="+3V3">
       <node ref="J10" pin="2" pinfunction="Pin_2" pintype="passive"/>
-      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J5" pin="7" pinfunction="Pin_7" pintype="passive"/>
       <node ref="J9" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="R1" pin="1" pintype="passive"/>
       <node ref="R10" pin="1" pintype="passive"/>
@@ -569,8 +561,8 @@
       <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="J10" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="J6" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J5" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J5" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="J9" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U2" pin="3" pinfunction="VOUT+" pintype="power_out"/>
     </net>
@@ -587,31 +579,31 @@
       <node ref="U1" pin="17" pinfunction="RTC_GPIO0/SENSOR_VP/ADC1_CH0/GPIO36_IN" pintype="bidirectional"/>
     </net>
     <net code="5" name="/GPIO4_TOUCH">
-      <node ref="J5" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="J5" pin="11" pinfunction="Pin_11" pintype="passive"/>
       <node ref="U1" pin="5" pinfunction="GPIO4/ADC2_CH0/TOUCH0/RTC_GPIO10" pintype="bidirectional"/>
     </net>
     <net code="6" name="/GPIO5_BOOT_STRAP">
-      <node ref="J5" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="J5" pin="12" pinfunction="Pin_12" pintype="passive"/>
       <node ref="U1" pin="8" pinfunction="BOOT_PWM_GPIO5/VSPI_CS0" pintype="bidirectional"/>
     </net>
     <net code="7" name="/GPIO12_OUT_STRAP">
-      <node ref="J6" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J5" pin="4" pinfunction="Pin_4" pintype="passive"/>
       <node ref="U1" pin="27" pinfunction="RTC_GPIO15/HSPI_MISO/TOUCH5/ADC2_CH5/GPIO12_OUT" pintype="bidirectional"/>
     </net>
     <net code="8" name="/GPIO26_TOUCH">
-      <node ref="J5" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J5" pin="10" pinfunction="Pin_10" pintype="passive"/>
       <node ref="U1" pin="24" pinfunction="RTC_GPIO7/DAC2/ADC2_CH9/GPIO26" pintype="bidirectional"/>
     </net>
     <net code="9" name="/GPIO27_TOUCH">
-      <node ref="J5" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J5" pin="9" pinfunction="Pin_9" pintype="passive"/>
       <node ref="U1" pin="25" pinfunction="RTC_GPIO17/TOUCH7/ADC2_CH7/GPIO27" pintype="bidirectional"/>
     </net>
     <net code="10" name="/GPIO32_TOUCH">
-      <node ref="J5" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J5" pin="8" pinfunction="Pin_8" pintype="passive"/>
       <node ref="U1" pin="21" pinfunction="RTC_GPIO9/TOUCH9/ADC1_CH4/GPIO32" pintype="bidirectional"/>
     </net>
     <net code="11" name="/GPIO39_IN">
-      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
       <node ref="U1" pin="18" pinfunction="RTC_GPIO3/SENSOR_VN/ADC1_CH3/GPIO39_IN" pintype="bidirectional"/>
     </net>
     <net code="12" name="/I2C_INT">
@@ -681,9 +673,8 @@
       <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="J3" pin="4" pinfunction="Pin_4" pintype="passive"/>
       <node ref="J4" pin="1" pinfunction="-" pintype="passive"/>
-      <node ref="J5" pin="8" pinfunction="Pin_8" pintype="passive"/>
-      <node ref="J6" pin="4" pinfunction="Pin_4" pintype="passive"/>
-      <node ref="J6" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="J9" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="R9" pin="1" pintype="passive"/>
       <node ref="U1" pin="2" pinfunction="GND" pintype="passive"/>
@@ -715,9 +706,9 @@
       <node ref="F1" pin="1" pintype="passive"/>
       <node ref="J4" pin="2" pinfunction="+" pintype="power_out"/>
     </net>
-    <net code="33" name="Net-(J6-Pin_3)">
-      <node ref="J6" pin="3" pinfunction="Pin_3" pintype="passive"/>
-      <node ref="R7" pin="2" pintype="passive"/>
+    <net code="33" name="Net-(J5-Pin_3)">
+      <node ref="J5" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
     </net>
     <net code="34" name="unconnected-(J3-Pin_6-Pad6)">
       <node ref="J3" pin="6" pinfunction="Pin_6" pintype="passive+no_connect"/>
