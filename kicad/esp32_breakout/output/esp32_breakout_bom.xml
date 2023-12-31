@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\esp32_breakout\esp32_breakout.kicad_sch</source>
-    <date>12/29/2023 1:41:01 AM</date>
+    <date>12/30/2023 9:12:20 PM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -232,7 +232,7 @@
       <property name="ki_description" value="Resistor, small US symbol"/>
       <property name="ki_keywords" value="r resistor"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>fe46557f-9f94-4a51-9782-c939aa0ca631</tstamps>
+      <tstamps>9c7f257b-e44b-4b22-8ec0-29be5ffacf2f</tstamps>
     </comp>
     <comp ref="R8">
       <value>200k</value>
@@ -561,7 +561,7 @@
       <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="J10" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="J5" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="J5" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="J9" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U2" pin="3" pinfunction="VOUT+" pintype="power_out"/>
@@ -587,7 +587,7 @@
       <node ref="U1" pin="8" pinfunction="BOOT_PWM_GPIO5/VSPI_CS0" pintype="bidirectional"/>
     </net>
     <net code="7" name="/GPIO12_OUT_STRAP">
-      <node ref="J5" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="U1" pin="27" pinfunction="RTC_GPIO15/HSPI_MISO/TOUCH5/ADC2_CH5/GPIO12_OUT" pintype="bidirectional"/>
     </net>
     <net code="8" name="/GPIO26_TOUCH">
@@ -673,8 +673,8 @@
       <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="J3" pin="4" pinfunction="Pin_4" pintype="passive"/>
       <node ref="J4" pin="1" pinfunction="-" pintype="passive"/>
-      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J5" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J5" pin="5" pinfunction="Pin_5" pintype="passive"/>
       <node ref="J9" pin="6" pinfunction="Pin_6" pintype="passive"/>
       <node ref="R9" pin="1" pintype="passive"/>
       <node ref="U1" pin="2" pinfunction="GND" pintype="passive"/>

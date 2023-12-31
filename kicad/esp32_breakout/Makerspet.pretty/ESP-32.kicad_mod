@@ -101,8 +101,8 @@
     (thermal_bridge_angle 45) (tstamp c3fc6ea0-49a9-4bd4-97e9-9bc4789110a9))
   (pad "30" thru_hole oval (at -17.78 -12.7) (size 1.2 2) (drill 0.8) (layers "*.Cu" "*.Mask")
     (thermal_bridge_angle 45) (tstamp a1a2a2f3-2f17-4f26-bc50-0ba8c216ba08))
-  (model "C:/Users/ilya/git/snoopy/kicad/step/ESP-WROOM32.step"
-    (offset (xyz -17 -1.5 5))
+  (model "C:/Users/ilya/git/snoopy/kicad/step/ESP-WROOM32 with headers.step"
+    (offset (xyz -8.25 -7.3 10.5))
     (scale (xyz 1 1 1))
     (rotate (xyz -90 0 90))
   )
