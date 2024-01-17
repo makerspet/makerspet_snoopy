@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>C:\Users\ilya\git\snoopy\kicad\neato_adapter\Neato_adapter.kicad_sch</source>
-    <date>1/16/2024 6:56:44 PM</date>
+    <date>1/16/2024 11:24:24 PM</date>
     <tool>Eeschema 7.0.9</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -179,6 +179,18 @@
         <pin num="4" name="VIN+" type="power_in"/>
       </pins>
     </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
     <libpart lib="Transistor_FET" part="BSS123">
       <description>0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23</description>
       <docs>http://www.diodes.com/assets/Datasheets/ds30366.pdf</docs>
@@ -211,6 +223,9 @@
     <library logical="Makerspet">
       <uri>C:\Users\ilya\git\snoopy\kicad\neato_adapter/Makerspet.kicad_sym</uri>
     </library>
+    <library logical="Mechanical">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
+    </library>
     <library logical="Transistor_FET">
       <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
     </library>
@@ -220,12 +235,12 @@
       <node ref="U1" pin="3" pinfunction="VOUT+" pintype="power_out"/>
     </net>
     <net code="2" name="+5V">
-      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U1" pin="4" pinfunction="VIN+" pintype="power_in"/>
     </net>
     <net code="3" name="/MOT+">
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
     </net>
     <net code="4" name="/MOT-">
