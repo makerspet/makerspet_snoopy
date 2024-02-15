@@ -42,29 +42,6 @@ Snoopy was designed in Fusion 360 in 05/2023 and printed using a Voron 2.4r2 350
  <img src="http://img.youtube.com/vi/zizGI8MjANU/maxresdefault.jpg" alt="Watch the Arduino ESP32 breakout board setup instructions video" width="720" height="405" border="10" />
 </a>
 
-## DIY Hardware build
-- 3D printing:
-  - get a 3D printer with a 300x300mm or larger build volume.
-  - STL files [here](https://github.com/makerspet/makerspet_snoopy/tree/main/stl/)
-  - 3MF files [here](https://github.com/makerspet/makerspet_snoopy/tree/main/3mf/)
-  - Fusion 360 source files [here](https://github.com/makerspet/makerspet_snoopy/tree/main/fusion360)
-
-## Electronics
-- KiCAD schematic, PCB, BoM [here](https://github.com/makerspet/makerspet_snoopy/tree/main/kicad)
-
-## Arduino firmware
-- Firmware with instructions [here](https://github.com/makerspet/makerspet_snoopy/tree/main/arduino/)
-
-## Software setup
-- PC setup for [developers](https://github.com/kaiaai/docker/tree/main/kaia-ros-dev)
-- PC setup for [end users](https://github.com/kaiaai/docker/tree/main/kaia-ros)
-- Firmware [here](https://github.com/makerspet/makerspet_snoopy/tree/main/firmware/)
-
-## ROS2
-- ROS2 robot description [URDF](https://github.com/makerspet/makerspet_snoopy/tree/main/urdf)
-- configuration files [here](https://github.com/makerspet/makerspet_snoopy/tree/main/config)
-- Kaia.ai TODO
-
 ![screenshot2](https://github.com/makerspet/makerspet_snoopy/assets/143911662/11cb3721-ff3d-4806-9010-25725e0a10e3)
 
 ![PXL_20230609_174802983-scaled](https://github.com/makerspet/makerspet_snoopy/assets/143911662/689842a7-321f-4944-9b04-38ad58f68a2c)
@@ -72,3 +49,12 @@ Snoopy was designed in Fusion 360 in 05/2023 and printed using a Voron 2.4r2 350
 ![PXL_20230530_031143988-scaled](https://github.com/makerspet/makerspet_snoopy/assets/143911662/89042e18-19d9-468f-8df3-c9fcf912ba8f)
 
 ![PXL_20230530_021024946-scaled](https://github.com/makerspet/makerspet_snoopy/assets/143911662/f9d9d3c2-3dc0-4658-9df7-80dd81a843b6)
+
+## Instructions and files
+- 3D printing [STL](https://github.com/makerspet/3d_models/tree/main/snoopy_300mm/stl), [3MF](https://github.com/makerspet/3d_models/tree/main/snoopy_300mm/3mf)
+- Arduino ESP32 [firmware](https://github.com/kaiaai/firmware)
+- PC end user and developer [setup](https://github.com/kaiaai/docker)
+- KiCad [schematic, PCB](https://github.com/makerspet/pcb)
+- Software setup, configuration [instructions](https://www.youtube.com/playlist?list=PLOSXKDW70aR8SA16wTB0ou9ClKhv7micy)
+- Fusion 360 3D CAD [design files](https://github.com/makerspet/3d_models/tree/main/snoopy_300mm/fusion360)
+- ROS2 software mod [instructions](https://github.com/makerspet/makerspet_loki/tree/main/urdf)
