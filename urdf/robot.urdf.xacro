@@ -34,7 +34,6 @@
     <xacro:solid_cylinder_inertia m="${lower_cylinder_mass}" r="${base_diameter/2}" h="${lower_cylinder_height}"/>
   </link>
 
-
   <joint name="caster_joint" type="fixed">
     <parent link="base_link"/>
     <child link="caster_link"/>
@@ -59,7 +58,6 @@
 
     <xacro:solid_sphere_inertia m="${caster_mass}" r="${caster_diameter/2}"/>
   </link>
-
 
   <joint name="wheel_left_joint" type="continuous">
     <parent link="base_link"/>
@@ -138,7 +136,6 @@
     <xacro:solid_cylinder_inertia m="${laser_puck_mass}" r="${laser_puck_diameter/2}" h="${lower_to_upper_cylinders_gap - laser_puck_to_upper_cylinder_gap}"/>
   </link>
 
-
   <joint name="base_upper_joint" type="fixed">
     <parent link="base_link"/>
     <child link="base_upper_link"/>
@@ -164,7 +161,6 @@
     <xacro:solid_cylinder_inertia m="${upper_cylinder_mass}" r="${base_diameter/2}" h="${upper_cylinder_height}"/>
   </link>
 
-
   <joint name="head_joint" type="fixed">
     <parent link="base_upper_link"/>
     <child link="head_link"/>
@@ -189,7 +185,6 @@
 
     <xacro:solid_semi_ellipsoid_inertia m="${head_mass}" x="${base_diameter/2}" y="${base_diameter/2}" z="${head_height}"/>
   </link>
-
 
   <joint name="tablet_joint" type="fixed">
     <parent link="head_link"/>
